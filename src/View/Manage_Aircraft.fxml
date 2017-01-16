@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="380.0" prefWidth="648.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.Manage_AircraftController">
+   <children>
+      <Button fx:id="btn_manufacturer" layoutX="44.0" layoutY="136.0" mnemonicParsing="false" prefHeight="108.0" prefWidth="166.0" text="Fabricante">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn_model" layoutX="243.0" layoutY="136.0" mnemonicParsing="false" prefHeight="108.0" prefWidth="166.0" text="Modelo">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn_aircraft" layoutX="439.0" layoutY="136.0" mnemonicParsing="false" prefHeight="108.0" prefWidth="166.0" text="Aeronave">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

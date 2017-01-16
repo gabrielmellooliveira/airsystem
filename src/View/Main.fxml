@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="366.0" prefWidth="595.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainController">
+   <children>
+      <Button fx:id="btn_manage_airplane" layoutX="71.0" layoutY="62.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="200.0" text="Gerenciar Avião">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn_manage_company" layoutX="327.0" layoutY="62.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="200.0" text="Gerenciar Companhia">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn_list_airplanes" layoutX="73.0" layoutY="205.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="200.0" text="Listar Aviões">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn_list_users" layoutX="329.0" layoutY="205.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="200.0" text="Listar Usuários">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

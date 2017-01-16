@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="282.0" prefWidth="395.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Manage_Aircraft_ModelController">
+   <children>
+      <TextField fx:id="tf_model" layoutX="136.0" layoutY="39.0" prefHeight="25.0" prefWidth="201.0" />
+      <TextField fx:id="tf_number_seats" layoutX="136.0" layoutY="74.0" prefHeight="25.0" prefWidth="201.0" />
+      <ComboBox fx:id="cb_origin" layoutX="136.0" layoutY="109.0" prefHeight="25.0" prefWidth="201.0" />
+      <DatePicker fx:id="dp_fabrication" layoutX="136.0" layoutY="144.0" prefHeight="25.0" prefWidth="201.0" />
+      <ComboBox fx:id="cb_turbines" layoutX="136.0" layoutY="179.0" prefHeight="25.0" prefWidth="201.0" />
+      <Button fx:id="btn_register" layoutX="135.0" layoutY="221.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Cadastrar" />
+      <Button fx:id="btn_cancel" layoutX="248.0" layoutY="221.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Cancelar" />
+      <Label fx:id="lb_model" layoutX="35.0" layoutY="39.0" prefHeight="25.0" prefWidth="100.0" text="Modelo" />
+      <Label fx:id="lb_number_seats" layoutX="35.0" layoutY="74.0" prefHeight="25.0" prefWidth="100.0" text="Qtde Assentos" />
+      <Label fx:id="lb_origin" layoutX="35.0" layoutY="109.0" prefHeight="25.0" prefWidth="100.0" text="Origem" />
+      <Label fx:id="lb_fabrication" layoutX="35.0" layoutY="144.0" prefHeight="25.0" prefWidth="100.0" text="Fabricação" />
+      <Label fx:id="lb_turbines" layoutX="35.0" layoutY="179.0" prefHeight="25.0" prefWidth="100.0" text="Turbinas" />
+   </children>
+</AnchorPane>

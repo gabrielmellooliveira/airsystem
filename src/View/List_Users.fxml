@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="602.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.List_UsersController">
+   <children>
+      <TableView fx:id="table_users" prefHeight="528.0" prefWidth="386.0">
+        <columns>
+          <TableColumn fx:id="col_id" prefWidth="61.0" text="ID" />
+          <TableColumn fx:id="col_name" prefWidth="156.0" text="Nome" />
+            <TableColumn fx:id="col_last_name" prefWidth="168.0" text="Sobrenome" />
+        </columns>
+      </TableView>
+      <Button fx:id="btn_change" layoutX="508.0" layoutY="205.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Alterar" />
+      <Button fx:id="btn_delete" layoutX="623.0" layoutY="205.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Deletar" />
+      <TextField fx:id="tf_name" layoutX="508.0" layoutY="264.0" prefHeight="25.0" prefWidth="200.0" />
+      <TextField fx:id="tf_last_name" layoutX="508.0" layoutY="297.0" prefHeight="25.0" prefWidth="200.0" />
+      <TextField fx:id="tf_address" layoutX="508.0" layoutY="332.0" prefHeight="25.0" prefWidth="200.0" />
+      <DatePicker fx:id="dp_date_birth" layoutX="508.0" layoutY="365.0" prefHeight="25.0" prefWidth="200.0" />
+      <TextField fx:id="tf_phone" layoutX="506.0" layoutY="399.0" prefHeight="25.0" prefWidth="200.0" />
+      <TextField fx:id="tf_user" layoutX="506.0" layoutY="432.0" prefHeight="25.0" prefWidth="200.0" />
+      <TextField fx:id="pf_password" layoutX="506.0" layoutY="467.0" prefHeight="25.0" prefWidth="200.0" />
+      <TextField fx:id="pf_password_confirm" layoutX="506.0" layoutY="500.0" prefHeight="25.0" prefWidth="200.0" />
+      <Button fx:id="btn_back" layoutX="301.0" layoutY="547.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Voltar" />
+      <Button fx:id="btn_new" layoutX="423.0" layoutY="547.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Novo" />
+      <Button fx:id="btn_edit" layoutX="523.0" layoutY="547.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Editar" />
+      <Button fx:id="btn_delete_user" layoutX="621.0" layoutY="547.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Deletar" />
+      <ImageView fx:id="img" fitHeight="150.0" fitWidth="200.0" layoutX="508.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="lb_user_data" alignment="CENTER" layoutX="429.0" layoutY="4.0" prefHeight="25.0" prefWidth="273.0" text="Dados do usuário">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lb_name" layoutX="398.0" layoutY="264.0" prefHeight="25.0" prefWidth="109.0" text="Nome" />
+      <Label fx:id="lb_last_name" layoutX="398.0" layoutY="297.0" prefHeight="25.0" prefWidth="109.0" text="Sobrenome" />
+      <Label fx:id="lb_address" layoutX="398.0" layoutY="332.0" prefHeight="25.0" prefWidth="109.0" text="Endereço" />
+      <Label fx:id="lb_date_birth" layoutX="396.0" layoutY="365.0" prefHeight="25.0" prefWidth="109.0" text="Nascimento" />
+      <Label fx:id="lb_phone" layoutX="396.0" layoutY="399.0" prefHeight="25.0" prefWidth="109.0" text="Telefone" />
+      <Label fx:id="lb_user" layoutX="396.0" layoutY="432.0" prefHeight="25.0" prefWidth="109.0" text="Usuário" />
+      <Label fx:id="lb_password" layoutX="396.0" layoutY="467.0" prefHeight="25.0" prefWidth="109.0" text="Senha" />
+      <Label fx:id="lb_password_confirm" layoutX="396.0" layoutY="500.0" prefHeight="25.0" prefWidth="109.0" text="Confirma senha" />
+   </children>
+</AnchorPane>

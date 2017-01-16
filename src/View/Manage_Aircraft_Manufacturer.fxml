@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="290.0" prefWidth="412.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Manage_Aircraft_ManufacturerController">
+   <children>
+      <TextField fx:id="tf_manufacturer" layoutX="144.0" layoutY="44.0" prefHeight="25.0" prefWidth="208.0" />
+      <TextField fx:id="tf_focus" layoutX="144.0" layoutY="79.0" prefHeight="25.0" prefWidth="208.0" />
+      <TextField fx:id="tf_country_origin" layoutX="144.0" layoutY="114.0" prefHeight="25.0" prefWidth="208.0" />
+      <TextField fx:id="tf_phone" layoutX="144.0" layoutY="149.0" prefHeight="25.0" prefWidth="208.0" />
+      <TextField fx:id="tf_email" layoutX="144.0" layoutY="184.0" prefHeight="25.0" prefWidth="208.0" />
+      <Button fx:id="btn_register" layoutX="144.0" layoutY="223.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Cadastrar" />
+      <Button fx:id="btn_cancel" layoutX="263.0" layoutY="223.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Cancelar" />
+      <Label fx:id="lb_manufacturer" layoutX="41.0" layoutY="44.0" prefHeight="25.0" prefWidth="100.0" text="Fabricante" />
+      <Label fx:id="lb_focus" layoutX="41.0" layoutY="79.0" prefHeight="25.0" prefWidth="100.0" text="Sede" />
+      <Label fx:id="lb_country_origin" layoutX="41.0" layoutY="114.0" prefHeight="25.0" prefWidth="100.0" text="País de Origem" />
+      <Label fx:id="lb_phone" layoutX="41.0" layoutY="149.0" prefHeight="25.0" prefWidth="100.0" text="Telefone" />
+      <Label fx:id="lb_email" layoutX="41.0" layoutY="184.0" prefHeight="25.0" prefWidth="100.0" text="E-mail" />
+   </children>
+</AnchorPane>

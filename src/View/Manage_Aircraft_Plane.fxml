@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="390.0" prefWidth="1229.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Manage_Aircraft_PlaneController">
+    <children>
+      <TableView fx:id="table_airplane" layoutX="476.0" prefHeight="390.0" prefWidth="832.0">
+        <columns>
+          <TableColumn fx:id="col_id" prefWidth="59.0" text="ID" />
+          <TableColumn fx:id="col_model" prefWidth="121.0" text="Modelo" />
+            <TableColumn fx:id="col_company" minWidth="0.0" prefWidth="128.0" text="Companhia" />
+            <TableColumn fx:id="col_manufacturer" prefWidth="104.0" text="Fabricante" />
+            <TableColumn fx:id="col_number_seats" minWidth="0.0" prefWidth="94.0" text="Assentos" />
+            <TableColumn fx:id="col_fabrication" prefWidth="103.0" text="Fabricação" />
+            <TableColumn fx:id="col_customization" prefWidth="87.0" text="Cor" />
+            <TableColumn fx:id="col_description" prefWidth="135.0" text="Descrição" />
+        </columns>
+      </TableView>
+      <TabPane prefHeight="389.0" prefWidth="476.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="tab_cadastro" text="Cadastro">
+               <content>
+                  <AnchorPane prefHeight="360.0" prefWidth="343.0">
+                     <children>
+                        <ComboBox fx:id="cb_model" layoutX="108.0" layoutY="35.0" prefHeight="25.0" prefWidth="200.0" />
+                        <ComboBox fx:id="cb_manufacturer" layoutX="108.0" layoutY="71.0" prefHeight="25.0" prefWidth="200.0" />
+                        <ComboBox fx:id="cb_company" layoutX="107.0" layoutY="108.0" prefHeight="25.0" prefWidth="200.0" />
+                        <TextField fx:id="tf_customization" layoutX="107.0" layoutY="144.0" prefHeight="25.0" prefWidth="200.0" />
+                        <TextField fx:id="tf_description" layoutX="108.0" layoutY="180.0" prefHeight="25.0" prefWidth="200.0" />
+                        <Button fx:id="btn_change" layoutX="315.0" layoutY="189.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Alterar" />
+                        <Button fx:id="btn_delete_img" layoutX="398.0" layoutY="189.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Deletar" />
+                        <Button fx:id="btn_register" layoutX="103.0" layoutY="290.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Cadastrar" />
+                        <Button fx:id="btn_cancel" layoutX="268.0" layoutY="290.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Cancelar" />
+                        <ImageView fx:id="img_airplane_register" fitHeight="150.0" fitWidth="150.0" layoutX="314.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="lb_model" layoutX="18.0" layoutY="36.0" prefHeight="24.0" prefWidth="90.0" text="Modelo" />
+                        <Label fx:id="lb_manufacturer" layoutX="18.0" layoutY="72.0" prefHeight="24.0" prefWidth="90.0" text="Fabricante" />
+                        <Label fx:id="lb_company" layoutX="18.0" layoutY="109.0" prefHeight="24.0" prefWidth="90.0" text="Companhia" />
+                        <Label fx:id="lb_customization" layoutX="18.0" layoutY="145.0" prefHeight="24.0" prefWidth="90.0" text="Personalização" />
+                        <Label fx:id="lb_description" layoutX="19.0" layoutY="181.0" prefHeight="24.0" prefWidth="90.0" text="Descrição" />
+                        <Label fx:id="lb_add_sound" layoutX="19.0" layoutY="228.0" prefHeight="24.0" prefWidth="90.0" text="Adicionar som" />
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+          <Tab fx:id="tab_pesquisa" text="Pesquisa">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="tf_search" layoutX="21.0" layoutY="236.0" prefHeight="25.0" prefWidth="425.0" />
+                        <Button fx:id="btn_search" layoutX="21.0" layoutY="268.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" text="Buscar" />
+                        <Button fx:id="btn_generate_pdf" layoutX="324.0" layoutY="268.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" text="Gerar PDF" />
+                        <Button fx:id="btn_delete" layoutX="20.0" layoutY="313.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="92.0" text="Excluir" />
+                        <ImageView fx:id="img_airplane" fitHeight="200.0" fitWidth="250.0" layoutX="108.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="lb_search" layoutX="21.0" layoutY="204.0" prefHeight="31.0" prefWidth="122.0" text="Procurar" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
