@@ -84,4 +84,37 @@ public class Model_DAO {
         
     }
     
+    public Model select_model_especific(String model_especific)
+    {
+        Model Models = null;
+        
+        try{
+      
+            PreparedStatement stmt = this.connection_DB.prepareStatement("SELECT * FROM Models WHERE model = ?");
+            
+            stmt.setString(1, model_especific);
+            
+            ResultSet rs = stmt.executeQuery();
+                        
+            Model model = new Model(
+                rs.getInt("id_model"),
+                rs.getString("model"),
+                rs.getInt("number_seats"),
+                rs.getString("origin"),
+                rs.getDate("fabrication").toLocalDate(),
+                rs.getInt("turbines")
+            );
+                
+            Models = model;
+            
+            stmt.executeQuery();
+            
+        }catch(SQLException ex){
+            throw new RuntimeException(ex);
+        }finally{        
+            return Models;
+        }
+        
+    }
+    
 }

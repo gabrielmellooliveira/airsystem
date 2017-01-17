@@ -81,7 +81,7 @@ public class Manage_CompanyController implements Initializable {
     //ImageView
     @FXML private ImageView img_company_register;
     
-    private String img_file;
+    private String img_file = "/Images/sem-foto.jpg";
     
     private Company company_selected;
     
@@ -220,7 +220,7 @@ public class Manage_CompanyController implements Initializable {
         
         //TAB - CADASTRAR
         btn_change.setOnMouseClicked(s -> change());
-        btn_delete_img.setOnMouseClicked(s -> img_company_register.setImage(new Image("")));
+        btn_delete_img.setOnMouseClicked(s -> img_company_register.setImage(new Image("/Images/sem-foto.jpg")));
         btn_register.setOnMouseClicked(s -> register());
         btn_cancel.setOnMouseClicked(s -> {
             Main screen = new Main();
@@ -247,7 +247,6 @@ public class Manage_CompanyController implements Initializable {
         tf_search.setOnKeyReleased((KeyEvent e)->{
             search();
         });
-        
     }
     
     void language_adaptation(){

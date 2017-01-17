@@ -41,6 +41,10 @@ public class List_AircraftsController implements Initializable {
     //Button
     @FXML private Button btn_search;
     
+    void search(){
+        
+    }
+    
     void add_css(){
         btn_search.getStyleClass().add("button_green");  
     }
@@ -55,9 +59,7 @@ public class List_AircraftsController implements Initializable {
         img_left.setOnMouseClicked(s -> tabpane_airplane.setSide(Side.LEFT));
         img_right.setOnMouseClicked(s -> tabpane_airplane.setSide(Side.RIGHT));
         img_up.setOnMouseClicked(s -> tabpane_airplane.setSide(Side.TOP));
-        //btn_list_aircrafts.setOnMouseClicked(s -> Login.getStage().show());
-        //btn_manage_company.setOnMouseClicked(s -> Login.getStage().show());
-        //btn_manage_aircrafts.setOnMouseClicked(s -> Login.getStage().show());
+        btn_search.setOnMouseClicked(s -> tabpane_airplane.setSide(Side.TOP));
     }
     
     void language_adaptation(){

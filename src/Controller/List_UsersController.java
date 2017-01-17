@@ -55,7 +55,7 @@ public class List_UsersController implements Initializable {
     //ImageView
     @FXML private ImageView img;
     
-    private String img_file;
+    private String img_file = "/Images/sem-foto.jpg";
     
     private User user_selected;
     
@@ -171,7 +171,7 @@ public class List_UsersController implements Initializable {
     
     void action_buttons(){
         btn_change.setOnMouseClicked(s -> change_image());
-        btn_delete.setOnMouseClicked(s -> img.setImage(null));
+        btn_delete.setOnMouseClicked(s -> img.setImage(new Image("/Images/sem-foto.jpg")));
         btn_back.setOnMouseClicked(s -> {
             Main screen = new Main();
             try {

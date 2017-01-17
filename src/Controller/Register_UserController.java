@@ -44,7 +44,7 @@ public class Register_UserController implements Initializable {
     //Buttons
     @FXML private Button btn_change, btn_delete, btn_register, btn_cancel;
    
-    private String img_file;
+    private String img_file = "/Images/sem-foto.jpg";
     
     void change_image(){
         FileChooser fc = new FileChooser();
@@ -100,7 +100,7 @@ public class Register_UserController implements Initializable {
     
     void action_buttons(){
         btn_change.setOnMouseClicked(s -> change_image());
-        btn_delete.setOnMouseClicked(s -> img.setImage(null));
+        btn_delete.setOnMouseClicked(s -> img.setImage(new Image("/Images/sem-foto.jpg")));
         btn_register.setOnMouseClicked(s -> register_user());
         btn_cancel.setOnMouseClicked(s -> {Login.getStage().show();Register_User.getStage().close();});
     }

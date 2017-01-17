@@ -26,7 +26,7 @@ public class User_DAO {
     public void insert_user(User user) throws SQLException{
        
        Connection c = Connection_Factory.getConnection();
-       String sql = "INSERT INTO Users(name, last_name, address, date_birth, phone, user, password, img)" + 
+       String sql = "INSERT INTO Users(name_, last_name, address, date_birth, phone, user_, password_, img)" + 
                     " VALUES (?, ?, ?, ?, ?, ?, ?, ?)"; 
         
        try{
@@ -68,13 +68,13 @@ public class User_DAO {
  
                 User user = new User(
                     rs.getInt("id_user"),
-                    rs.getString("name"),
+                    rs.getString("name_"),
                     rs.getString("last_name"),
                     rs.getString("address"),
                     rs.getDate("date_birth").toLocalDate(),
                     rs.getString("phone"),
-                    rs.getString("user"),
-                    rs.getString("password"),
+                    rs.getString("user_"),
+                    rs.getString("password_"),
                     rs.getString("img")
                 );
                 
@@ -94,7 +94,7 @@ public class User_DAO {
     public void edit_user(User user) throws SQLException
     {
         Connection c = Connection_Factory.getConnection();
-        String sql = "UPDATE Users SET name = ?, last_name = ?, address = ?, date_birth = ?, phone = ?, user = ?, password = ?, img = ?" + 
+        String sql = "UPDATE Users SET name_ = ?, last_name = ?, address = ?, date_birth = ?, phone = ?, user_ = ?, password_ = ?, img = ?" + 
                     " WHERE id_user = ?"; 
         
         PreparedStatement stat = c.prepareStatement(sql);
