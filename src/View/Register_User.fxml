@@ -21,7 +21,10 @@
       <Button fx:id="btn_delete" layoutX="596.0" layoutY="191.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="Deletar" />
       <Button fx:id="btn_register" layoutX="106.0" layoutY="276.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="Cadastrar" />
       <Button fx:id="btn_cancel" layoutX="219.0" layoutY="276.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="Cancelar" />
-      <ImageView fx:id="img" fitHeight="150.0" fitWidth="200.0" layoutX="483.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="img" fitHeight="150.0" fitWidth="185.0" layoutX="507.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/sem-foto.jpg" />
+         </image></ImageView>
       <Label fx:id="lb_name" layoutX="30.0" layoutY="27.0" prefHeight="25.0" prefWidth="100.0" text="Nome" />
       <Label fx:id="lb_address" layoutX="30.0" layoutY="66.0" prefHeight="25.0" prefWidth="100.0" text="Endereço" />
       <Label fx:id="lb_birth" layoutX="30.0" layoutY="109.0" prefHeight="25.0" prefWidth="100.0" text="Nascimento" />

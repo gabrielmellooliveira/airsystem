@@ -1,11 +1,18 @@
 package Controller;
 
+import DAO.User_DAO;
 import Main.List_Users;
 import Main.Main;
+import Model.User;
+import java.io.File;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -15,7 +22,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
@@ -26,8 +35,8 @@ import javafx.stage.Stage;
 public class List_UsersController implements Initializable {
 
     //TableView and TableColumns
-    @FXML private TableView table_users;
-    @FXML private TableColumn col_id, col_name, col_last_name;
+    @FXML private TableView<User> table_users;
+    @FXML private TableColumn<User, String> col_id, col_name, col_last_name;
     
     //Labels
     @FXML private Label lb_user_data;
@@ -45,6 +54,68 @@ public class List_UsersController implements Initializable {
     //ImageView
     @FXML private ImageView img;
     
+    private String img_file;
+    
+    private User user_selected;
+    
+    private ObservableList<User> users;
+    
+    void init_table(){
+        
+    }
+    
+    void change_image(){
+        FileChooser fc = new FileChooser();
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.jpg", "*.jpeg", "*.png"));
+        File file = fc.showOpenDialog(new Stage());
+        if (file != null)
+            img.setImage(new Image("file:///" + file.getAbsolutePath()));
+        img_file = "file:///" + file.getAbsolutePath();
+        
+    }
+    
+    void register_user(){
+        if (tf_name.getText().equals("") || tf_last_name.getText().equals("") || tf_user.getText().equals("") || pf_password.getText().equals("") || 
+            pf_password_confirm.getText().equals("") || dp_date_birth.getValue().equals(null)) {
+            
+            //Alert
+            Interfaces.Interface_Alert.Alert("Campos Nulos", "");
+            
+        } else {
+            
+            if (pf_password_confirm.getText().equals(pf_password.getText())) {
+                
+                User user = new User(tf_name.getText(), tf_last_name.getText(), tf_address.getText(),
+                dp_date_birth.getValue(), tf_phone.getText(), tf_user.getText(), pf_password.getText(), img_file);
+                
+                User_DAO user_DAO = new User_DAO();
+                try {
+                    user_DAO.insert_user(user);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Register_UserController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                //Alert
+                Interfaces.Interface_Alert.Alert("Registrado com sucesso", "");
+                
+            } else {
+                
+                //Alert
+                Interfaces.Interface_Alert.Alert("Erro ao registrar", "");
+                
+            }
+            
+        }
+    }
+    
+    void edit_user(){
+        
+    }
+    
+    void delete_user(){
+        
+    }
+    
     void add_css(){
         btn_change.getStyleClass().add("button_green");
         btn_delete.getStyleClass().add("button_red");
@@ -55,7 +126,7 @@ public class List_UsersController implements Initializable {
     }
     
     void action_buttons(){
-        //btn_change.setOnMouseClicked(s -> );
+        btn_change.setOnMouseClicked(s -> change_image());
         btn_delete.setOnMouseClicked(s -> img.setImage(null));
         btn_back.setOnMouseClicked(s -> {
             Main screen = new Main();
@@ -66,9 +137,16 @@ public class List_UsersController implements Initializable {
                 Logger.getLogger(Manage_AircraftController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        //btn_new.setOnMouseClicked(s -> );
+        btn_new.setOnMouseClicked(s -> register_user());
         //btn_edit.setOnMouseClicked(s -> );
         //btn_delete_user.setOnMouseClicked(s -> );
+        
+        table_users.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                
+            }
+        });
     }
     
     void language_adaptation(){
@@ -81,6 +159,7 @@ public class List_UsersController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        init_table();
         add_css();
         action_buttons();
         language_adaptation();

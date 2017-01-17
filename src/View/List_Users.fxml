@@ -31,7 +31,10 @@
       <Button fx:id="btn_new" layoutX="423.0" layoutY="547.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Novo" />
       <Button fx:id="btn_edit" layoutX="523.0" layoutY="547.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Editar" />
       <Button fx:id="btn_delete_user" layoutX="621.0" layoutY="547.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Deletar" />
-      <ImageView fx:id="img" fitHeight="150.0" fitWidth="200.0" layoutX="508.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="img" fitHeight="150.0" fitWidth="200.0" layoutX="533.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/sem-foto.jpg" />
+         </image></ImageView>
       <Label fx:id="lb_user_data" alignment="CENTER" layoutX="429.0" layoutY="4.0" prefHeight="25.0" prefWidth="273.0" text="Dados do usuário">
          <font>
             <Font size="18.0" />

@@ -1,13 +1,17 @@
 package Controller;
 
+import DAO.User_DAO;
 import Main.*;
+import Model.User;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
@@ -36,6 +40,8 @@ public class LoginController implements Initializable {
     //Buttons
     @FXML private Button btn_enter, btn_exit, btn_new_user;
     
+    private ObservableList<User> users;
+    
     void log_into(){
         //Do login
         if (tf_user.getText().equals("") || pf_password.getText().equals("")) {
@@ -54,13 +60,41 @@ public class LoginController implements Initializable {
                 } catch (Exception ex) {
                     Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }else if(tf_user.getText().equals("admin")){
-            
-            }else{
-            
-                //Alert    
-                Interfaces.Interface_Alert.Alert("Campos Nulos", "Teste - Alert with Interface");    
-            } 
+            }else{ 
+                
+                User_DAO user_DAO = new User_DAO();
+                users = user_DAO.select_user();
+                
+                for (User list_user : users) {
+                
+                    if (list_user.getUser().equals(tf_user.getText())) {
+                    
+                        if (list_user.getPassword().equals(pf_password.getText())) {
+                      
+                            //Alert
+                            Interfaces.Interface_Alert.Alert("Sucesso", "");
+                            
+                            Main main = new Main();
+                            
+                            try {
+                                main.start(new Stage());
+                            } catch (Exception ex) {
+                                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+
+                            Login.stage.close();
+                        
+                        }else{
+                        
+                            //Alert
+                            Interfaces.Interface_Alert.Alert("Erro - usuário inválido", "");
+                            
+                        }
+                    
+                    }
+ 
+                }
+            }
             
         }
     }
@@ -72,7 +106,14 @@ public class LoginController implements Initializable {
     }
     
     void action_buttons(){
-        //Alert alert = Alert.createAlert("Teste - Alert with Interface", "Alert Teste");
+        cb_language.getItems().addAll("Português", "Inglês");  //Arrumar tradução
+        cb_language.setValue(cb_language.getItems().get(0));
+        cb_language.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                
+            }
+        });
         btn_enter.setOnMouseClicked(s -> log_into());
         btn_exit.setOnMouseClicked(s -> System.exit(0));
         btn_new_user.setOnMouseClicked(s -> {

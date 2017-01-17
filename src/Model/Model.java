@@ -8,11 +8,21 @@ import java.time.LocalDate;
  */
 public class Model {
  
+    private int id_model;
     private String model;
     private int number_seats;
     private String origin;
     private LocalDate fabrication;
     private int turbines;
+
+    public Model(int id_model, String model, int number_seats, String origin, LocalDate fabrication, int turbines) {
+        this.id_model = id_model;
+        this.model = model;
+        this.number_seats = number_seats;
+        this.origin = origin;
+        this.fabrication = fabrication;
+        this.turbines = turbines;
+    }
 
     public Model(String model, int number_seats, String origin, LocalDate fabrication, int turbines) {
         this.model = model;
@@ -22,6 +32,14 @@ public class Model {
         this.turbines = turbines;
     }
 
+    public int getId_model() {
+        return id_model;
+    }
+
+    public void setId_model(int id_model) {
+        this.id_model = id_model;
+    }
+    
     public String getModel() {
         return model;
     }

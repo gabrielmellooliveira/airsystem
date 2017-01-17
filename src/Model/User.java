@@ -8,6 +8,7 @@ import java.time.LocalDate;
  */
 public class User {
    
+    private int id_user;
     private String name;
     private String last_name;
     private String address;
@@ -17,7 +18,8 @@ public class User {
     private String password;
     private String img;
 
-    public User(String name, String last_name, String address, LocalDate date_birth, String phone, String user, String password) {
+    public User(int id_user, String name, String last_name, String address, LocalDate date_birth, String phone, String user, String password, String img) {
+        this.id_user = id_user;
         this.name = name;
         this.last_name = last_name;
         this.address = address;
@@ -25,8 +27,28 @@ public class User {
         this.phone = phone;
         this.user = user;
         this.password = password;
+        this.img = img;
     }
 
+    public User(String name, String last_name, String address, LocalDate date_birth, String phone, String user, String password, String img) {
+        this.name = name;
+        this.last_name = last_name;
+        this.address = address;
+        this.date_birth = date_birth;
+        this.phone = phone;
+        this.user = user;
+        this.password = password;
+        this.img = img;
+    }
+
+    public int getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
+    }
+    
     public String getName() {
         return name;
     }

@@ -1,6 +1,9 @@
 package DAO;
 
+import JDBC.Connection_Factory;
+import Model.User;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,71 +20,65 @@ public class User_DAO {
     
     public User_DAO()
     {
-        //Usuario_DAO.conexao_BD = Connection_MVC.getConnection();
+        User_DAO.connection_DB = Connection_Factory.getConnection();
     }
         
-    /*public void insert_user(User user){
+    public void insert_user(User user) throws SQLException{
        
-       //Connection c = Connection_MVC.getConnection();
+       Connection c = Connection_Factory.getConnection();
        String sql = "INSERT INTO Users(name, last_name, address, date_birth, phone, user, password, img)" + 
                     " VALUES (?, ?, ?, ?, ?, ?, ?, ?)"; 
         
        try{
            
-           //PreparedStatement stat = c.prepareStatement(sql);
+           PreparedStatement stat = c.prepareStatement(sql);
            
-           stat.setString(1, usuario.getLogin());
-           stat.setString(2, usuario.getSenha());
-           stat.setString(3, usuario.getNome());
-           stat.setDate(4, usuario.getEmail());
-           stat.setString(5, null); //Date.valueOf( usuario.getData_nascimento() ));
-           stat.setString(6, 1);
-           stat.setString(7, usuario.getResposta_seguranca());
-           stat.setString(8, 1);
-           stat.setString(10, "file:///E:\\TCC\\Imagens\\Imagens_Usuarios\\Usuario_Default\\usuario_default.png");
+           stat.setString(1, user.getName());
+           stat.setString(2, user.getLast_name());
+           stat.setString(3, user.getAddress());
+           stat.setDate(4, Date.valueOf(user.getDate_birth()));
+           stat.setString(5, user.getPhone());
+           stat.setString(6, user.getUser());
+           stat.setString(7, user.getPassword());
+           stat.setString(8, user.getImg());
+           //stat.setString(10, "file:///E:\\TCC\\Imagens\\Imagens_Usuarios\\Usuario_Default\\usuario_default.png");
            
-           //stat.execute();
+           stat.execute();
            
        }catch(SQLException ex){
            System.out.println(ex.getMessage());
        }finally{
-           //c.close();
+           c.close();
        }
        
     }
     
     public ObservableList<User> select_user()
     {
-        try{
-            
-            ObservableList<User> Users = FXCollections.observableArrayList();
         
-            PreparedStatement stmt = this.conexao_BD.prepareStatement("SELECT * FROM Users");
+        ObservableList<User> Users = FXCollections.observableArrayList();
+        
+        try{
+      
+            PreparedStatement stmt = this.connection_DB.prepareStatement("SELECT * FROM Users");
             
             ResultSet rs = stmt.executeQuery();
                         
             while(rs.next()){
  
-                User usuario = new User();
+                User user = new User(
+                    rs.getInt("id_user"),
+                    rs.getString("name"),
+                    rs.getString("last_name"),
+                    rs.getString("address"),
+                    rs.getDate("date_birth").toLocalDate(),
+                    rs.getString("phone"),
+                    rs.getString("user"),
+                    rs.getString("password"),
+                    rs.getString("img")
+                );
                 
-                usuario.setId_usuario(rs.getInt("id_usuario"));
-                usuario.setLogin(rs.getString("login"));
-                usuario.setSenha(rs.getString("senha"));
-                usuario.setNome(rs.getString("nome"));
-                usuario.setEmail(rs.getString("email"));
-                usuario.setTelefone(rs.getInt("telefone"));
-                usuario.setData_nascimento(rs.getDate("data_nascimento").toLocalDate());
-                
-                usuario.setPais(rs.getString("nome_pais"));
-                
-                usuario.setEstado(rs.getString("nome_estado"));
-                
-                usuario.setPergunta_seguranca(rs.getString("pergunta_seguranca"));
-                
-                usuario.setResposta_seguranca(rs.getString("resposta_seguranca"));
-                usuario.setFoto_perfil(rs.getString("foto_perfil"));
-                   
-                Users.add(usuario);
+                Users.add(user);
             }
             
             stmt.executeQuery();
@@ -89,12 +86,12 @@ public class User_DAO {
         }catch(SQLException ex){
             throw new RuntimeException(ex);
         }finally{        
-            return User;
+            return Users;
         }
         
     }
     
-    public void deleta_user(User user)
+    /*public void deleta_user(User user)
     {
         String sql = "DELETE FROM Users WHERE id_user = ?";
         try{
