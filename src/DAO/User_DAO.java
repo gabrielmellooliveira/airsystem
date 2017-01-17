@@ -91,17 +91,48 @@ public class User_DAO {
         
     }
     
-    /*public void deleta_user(User user)
+    public void edit_user(User user) throws SQLException
+    {
+        Connection c = Connection_Factory.getConnection();
+        String sql = "UPDATE Users SET name = ?, last_name = ?, address = ?, date_birth = ?, phone = ?, user = ?, password = ?, img = ?" + 
+                    " WHERE id_user = ?"; 
+        
+        PreparedStatement stat = c.prepareStatement(sql);
+        
+        try{
+           
+            stat.setString(1, user.getName());
+            stat.setString(2, user.getLast_name());
+            stat.setString(3, user.getAddress());
+            stat.setDate(4, Date.valueOf(user.getDate_birth()));
+            stat.setString(5, user.getPhone());
+            stat.setString(6, user.getUser());
+            stat.setString(7, user.getPassword());
+            stat.setString(8, user.getImg());
+            stat.setInt(9, user.getId_user());
+           
+            stat.execute();
+            
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            stat.close();
+        }
+    }
+    
+    public void deleta_user(User user) throws SQLException
     {
         String sql = "DELETE FROM Users WHERE id_user = ?";
-        try{
-            PreparedStatement stmt = conexao_BD.prepareStatement(sql);
-            stmt.setInt(1, produto.getId_produto());
-            stmt.execute();
-            stmt.close();
+        PreparedStatement stmt = connection_DB.prepareStatement(sql);
+        
+        try{           
+            stmt.setInt(1, user.getId_user());
+            stmt.execute();         
         }catch(SQLException e){
             throw new RuntimeException(e);
+        }finally{
+            stmt.close();
         }
-    }*/
+    }
     
 }

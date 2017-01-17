@@ -73,12 +73,13 @@ public class Register_UserController implements Initializable {
                 User_DAO user_DAO = new User_DAO();
                 try {
                     user_DAO.insert_user(user);
+                    
+                    //Alert
+                    Interfaces.Interface_Alert.Alert("Registrado com sucesso", "");
+                    
                 } catch (SQLException ex) {
                     Logger.getLogger(Register_UserController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
-                //Alert
-                Interfaces.Interface_Alert.Alert("Registrado com sucesso", "");
                 
             } else {
                 

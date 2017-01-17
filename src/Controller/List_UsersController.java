@@ -22,6 +22,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -61,7 +62,13 @@ public class List_UsersController implements Initializable {
     private ObservableList<User> users;
     
     void init_table(){
-        
+        col_id.setCellValueFactory(new PropertyValueFactory("id_user"));
+        col_name.setCellValueFactory(new PropertyValueFactory("name"));        
+        col_last_name.setCellValueFactory(new PropertyValueFactory("last_name"));
+       
+        User_DAO user_DAO = new User_DAO();       
+        users = user_DAO.select_user();
+        table_users.setItems(users); 
     }
     
     void change_image(){
@@ -91,12 +98,13 @@ public class List_UsersController implements Initializable {
                 User_DAO user_DAO = new User_DAO();
                 try {
                     user_DAO.insert_user(user);
+                    
+                    //Alert
+                    Interfaces.Interface_Alert.Alert("Registrado com sucesso", "");
+                
                 } catch (SQLException ex) {
                     Logger.getLogger(Register_UserController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
-                //Alert
-                Interfaces.Interface_Alert.Alert("Registrado com sucesso", "");
                 
             } else {
                 
@@ -109,11 +117,47 @@ public class List_UsersController implements Initializable {
     }
     
     void edit_user(){
+        if (tf_name.getText().equals("") || tf_last_name.getText().equals("") || tf_user.getText().equals("") || pf_password.getText().equals("") || 
+            pf_password_confirm.getText().equals("") || dp_date_birth.getValue().equals(null)) {
         
+            //Alert
+            Interfaces.Interface_Alert.Alert("Campos Nulos", "");
+            
+        } else {
+            
+            if (pf_password.getText().equals(pf_password_confirm.getText())) {
+                
+                User user = new User(user_selected.getId_user(), tf_name.getText(), tf_last_name.getText(), tf_address.getText(),
+                dp_date_birth.getValue(), tf_phone.getText(), tf_user.getText(), pf_password.getText(), img_file);
+                
+                User_DAO user_DAO = new User_DAO();
+                try {
+                    user_DAO.edit_user(user);
+                    
+                    //Alert
+                    Interfaces.Interface_Alert.Alert("Editado com sucesso", "");
+                    
+                } catch (SQLException ex) {
+                    Logger.getLogger(Register_UserController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            } else {
+            }
+            
+        }
     }
     
     void delete_user(){
-        
+        User_DAO user_DAO = new User_DAO();
+        try {
+            user_DAO.deleta_user(user_selected);
+            
+            //Alert
+            Interfaces.Interface_Alert.Alert("Usuário deletado com sucesso", "");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(List_UsersController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     void add_css(){
@@ -138,13 +182,24 @@ public class List_UsersController implements Initializable {
             }
         });
         btn_new.setOnMouseClicked(s -> register_user());
-        //btn_edit.setOnMouseClicked(s -> );
-        //btn_delete_user.setOnMouseClicked(s -> );
+        btn_edit.setOnMouseClicked(s -> edit_user());
+        btn_delete_user.setOnMouseClicked(s -> delete_user());
         
         table_users.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                
+                if(newValue != null){
+                    user_selected = (User) newValue;
+                    tf_name.setText(user_selected.getName()); 
+                    tf_last_name.setText(user_selected.getLast_name()); 
+                    tf_address.setText(user_selected.getAddress()); 
+                    tf_phone.setText(user_selected.getPhone());
+                    tf_user.setText(user_selected.getUser());
+                    dp_date_birth.setValue(user_selected.getDate_birth());
+                    img.setImage(new Image(user_selected.getImg()));
+                }else{
+                    user_selected = null;
+                }
             }
         });
     }
