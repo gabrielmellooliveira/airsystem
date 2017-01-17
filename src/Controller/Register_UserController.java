@@ -58,7 +58,7 @@ public class Register_UserController implements Initializable {
     
     void register_user(){
         if (tf_name.getText().equals("") || tf_last_name.getText().equals("") || tf_user.getText().equals("") || pf_password.getText().equals("") || 
-            pf_password_confirm.getText().equals("") || dp_date_birth.getValue().equals(null)) {
+            pf_password_confirm.getText().equals("") || dp_date_birth.getValue() == null) {
             
             //Alert
             Interfaces.Interface_Alert.Alert("Campos Nulos", "");

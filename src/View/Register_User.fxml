@@ -13,7 +13,7 @@
       <TextField fx:id="tf_last_name" layoutX="298.0" layoutY="27.0" prefHeight="25.0" prefWidth="163.0" promptText="Digite seu sobrenome" />
       <TextField fx:id="tf_address" layoutX="130.0" layoutY="66.0" prefHeight="25.0" prefWidth="265.0" promptText="Digite seu endereço" />
       <TextField fx:id="tf_address_number" layoutX="411.0" layoutY="66.0" prefHeight="25.0" prefWidth="50.0" promptText="N°" />
-      <DatePicker fx:id="dp_birth" layoutX="130.0" layoutY="109.0" prefHeight="25.0" prefWidth="170.0" promptText="Ex. 10/10/2010" />
+      <DatePicker fx:id="dp_date_birth" layoutX="130.0" layoutY="109.0" prefHeight="25.0" prefWidth="170.0" promptText="Ex. 10/10/2010" />
       <TextField fx:id="tf_user" layoutX="130.0" layoutY="148.0" prefHeight="25.0" prefWidth="170.0" promptText="Digite seu usuário" />
       <PasswordField fx:id="pf_password" layoutX="130.0" layoutY="187.0" prefHeight="25.0" prefWidth="170.0" promptText="Digite sua senha" />
       <PasswordField fx:id="pf_password_confirm" layoutX="130.0" layoutY="226.0" prefHeight="25.0" prefWidth="170.0" promptText="Confirme sua senha" />
