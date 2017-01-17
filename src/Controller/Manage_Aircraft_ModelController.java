@@ -1,8 +1,11 @@
 package Controller;
 
+import DAO.Model_DAO;
 import Main.Manage_Aircraft;
 import Main.Manage_Aircraft_Model;
+import Model.Model;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,14 +30,39 @@ public class Manage_Aircraft_ModelController implements Initializable {
     
     //TextFields, ComboBoxs and DatePicker
     @FXML private TextField tf_model, tf_number_seats;
-    @FXML private ComboBox cb_origin, cb_turbines;
+    @FXML private ComboBox<String> cb_origin;
+    @FXML private ComboBox<Integer> cb_turbines;
     @FXML private DatePicker dp_fabrication;
     
     //Buttons
     @FXML private Button btn_register, btn_cancel;
     
     void register(){
-        
+        if (tf_model.getText().equals("") || tf_number_seats.getText().equals("") || cb_origin.getSelectionModel().isEmpty() || cb_turbines.getSelectionModel().isEmpty() || dp_fabrication.getValue().equals(null)) {
+            
+            //Alert
+            Interfaces.Interface_Alert.Alert("Campos Nulos", "");
+            
+        } else {
+            
+            Model model = new Model(tf_model.getText(), Integer.valueOf(tf_number_seats.getText()), cb_origin.getSelectionModel().getSelectedItem(),
+                                    dp_fabrication.getValue(), cb_turbines.getSelectionModel().getSelectedItem());
+                
+            Model_DAO model_DAO = new Model_DAO();
+            try {
+                model_DAO.insert_model(model);
+                    
+                //Alert
+                Interfaces.Interface_Alert.Alert("Registrado com sucesso", "");
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(Register_UserController.class.getName()).log(Level.SEVERE, null, ex);
+                    
+                //Alert
+                Interfaces.Interface_Alert.Alert("Erro ao registrar", "");
+                
+            }
+        }
     }
     
     void add_css(){

@@ -1,8 +1,11 @@
 package Controller;
 
+import DAO.Manufacturer_DAO;
 import Main.Manage_Aircraft;
 import Main.Manage_Aircraft_Manufacturer;
+import Model.Manufacturer;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,7 +33,32 @@ public class Manage_Aircraft_ManufacturerController implements Initializable {
     @FXML private Button btn_register, btn_cancel;
     
     void register(){
-        
+        if (tf_manufacturer.getText().equals("") || tf_focus.getText().equals("") || tf_country_origin.getText().equals("") ||
+            tf_phone.getText().equals("") || tf_email.getText().equals("")) {
+            
+            //Alert
+            Interfaces.Interface_Alert.Alert("Campos Nulos", "");
+            
+        } else {
+            
+            Manufacturer manufacturer = new Manufacturer(tf_manufacturer.getText(), tf_focus.getText(), tf_country_origin.getText(),
+            tf_phone.getText(), tf_email.getText());
+                
+            Manufacturer_DAO manufacturer_DAO = new Manufacturer_DAO();
+            try {
+                manufacturer_DAO.insert_manufacturer(manufacturer);
+                    
+                //Alert
+                Interfaces.Interface_Alert.Alert("Registrado com sucesso", "");
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(Register_UserController.class.getName()).log(Level.SEVERE, null, ex);
+                    
+                //Alert
+                Interfaces.Interface_Alert.Alert("Erro ao registrar", "");
+                
+            }
+        }
     }
     
     void add_css(){

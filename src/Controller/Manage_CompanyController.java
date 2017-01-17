@@ -1,7 +1,23 @@
 package Controller;
 
+import DAO.Company_DAO;
+import Main.Main;
+import Main.Manage_Company;
+import Model.Company;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -11,7 +27,12 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -60,6 +81,123 @@ public class Manage_CompanyController implements Initializable {
     //ImageView
     @FXML private ImageView img_company_register;
     
+    private String img_file;
+    
+    private Company company_selected;
+    
+    private ObservableList<Company> companys;
+    
+    void init_table(){
+        col_id.setCellValueFactory(new PropertyValueFactory("id_user"));
+        col_company.setCellValueFactory(new PropertyValueFactory("name"));        
+        col_cnpj.setCellValueFactory(new PropertyValueFactory("last_name"));
+        col_phone.setCellValueFactory(new PropertyValueFactory("name"));        
+        col_email.setCellValueFactory(new PropertyValueFactory("last_name"));
+       
+        Company_DAO company_DAO = new Company_DAO();       
+        companys = company_DAO.select_company();
+        table_company.setItems(companys); 
+    }
+    
+    void search(){
+        ObservableList<Company> company = FXCollections.observableArrayList();
+        
+        for (Company comp : companys) {
+            if (comp.getName_company().contains(tf_search.getText())) {
+                company.add(comp);
+            }
+        }
+        table_company.setItems(company);  
+    }
+    
+    void generate_pdf(){
+        
+        Document doc = new Document();
+        FileChooser fc = new FileChooser();
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF", "*.pdf"));
+        File file = fc.showOpenDialog(new Stage());
+        if(file != null){
+            try {
+                PdfWriter.getInstance(doc, new FileOutputStream(file.getAbsolutePath()));
+
+                doc.open();
+
+                for (Company company : companys) {
+                   doc.add(new Paragraph(lb_company.getText() + ": " + company.getName_company()));
+                   doc.add(new Paragraph(lb_cnpj.getText() + ": " + company.getCnpj()));
+                   doc.add(new Paragraph(lb_city.getText() + ": " + company.getCity()));
+                   doc.add(new Paragraph(lb_phone.getText() + ": " + company.getPhone()));
+                   doc.add(new Paragraph(lb_email.getText() + ": " + company.getEmail()));
+                   com.itextpdf.text.Image image = com.itextpdf.text.Image.getInstance(company.getImg());
+                   doc.add(image);
+                }
+
+                //Alert
+                Interfaces.Interface_Alert.Alert("PDF gerado com sucesso", "");
+
+            } catch (Exception e) {
+
+            }finally{
+                doc.close();
+            }
+        }else{
+            //Alert
+            Interfaces.Interface_Alert.Alert("Escolha um local para salvar o PDF", "");
+        }
+        
+    }
+    
+    void delete(){
+        Company_DAO company_DAO = new Company_DAO();
+        try {
+            company_DAO.deleta_company(company_selected);
+            
+            //Alert
+            Interfaces.Interface_Alert.Alert("Companhia deletada com sucesso", "");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(List_UsersController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    void change(){
+        FileChooser fc = new FileChooser();
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.jpg", "*.jpeg", "*.png"));
+        File file = fc.showOpenDialog(new Stage());
+        if (file != null)
+            img_company_register.setImage(new Image("file:///" + file.getAbsolutePath()));
+        img_file = "file:///" + file.getAbsolutePath();
+    }
+    
+    void register(){
+        if (tf_company.getText().equals("") || tf_cnpj.getText().equals("") || tf_phone.getText().equals("") || tf_email.getText().equals("") || 
+            cb_city.getSelectionModel().isEmpty() || cb_state.getSelectionModel().isEmpty()) {
+            
+            //Alert
+            Interfaces.Interface_Alert.Alert("Campos Nulos", "");
+            
+        } else {
+            
+            Company company = new Company(tf_company.getText(), tf_cnpj.getText(), cb_city.getSelectionModel().getSelectedItem() + " - " + cb_state.getSelectionModel().getSelectedItem(),
+            tf_phone.getText(), tf_email.getText(), img_file);
+                
+            Company_DAO company_DAO = new Company_DAO();
+            try {
+                company_DAO.insert_company(company);
+                    
+                //Alert
+                Interfaces.Interface_Alert.Alert("Registrado com sucesso", "");
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(Register_UserController.class.getName()).log(Level.SEVERE, null, ex);
+                
+                //Alert
+                Interfaces.Interface_Alert.Alert("Erro ao registrar", "");
+            }
+            
+        }
+    }
+    
     void add_css(){
         //TAB - PESQUISAR
         btn_search.getStyleClass().add("button_green");
@@ -75,10 +213,41 @@ public class Manage_CompanyController implements Initializable {
     }
     
     void action_buttons(){
-        //btn_list_users.setOnMouseClicked(s -> Login.getStage().show());
-        //btn_list_aircrafts.setOnMouseClicked(s -> Login.getStage().show());
-        //btn_manage_company.setOnMouseClicked(s -> Login.getStage().show());
-        //btn_manage_aircrafts.setOnMouseClicked(s -> Login.getStage().show());
+        //TAB - PESQUISAR
+        btn_search.setOnMouseClicked(s -> search());
+        btn_generate_pdf.setOnMouseClicked(s -> generate_pdf());
+        btn_delete.setOnMouseClicked(s -> delete());
+        
+        //TAB - CADASTRAR
+        btn_change.setOnMouseClicked(s -> change());
+        btn_delete_img.setOnMouseClicked(s -> img_company_register.setImage(new Image("")));
+        btn_register.setOnMouseClicked(s -> register());
+        btn_cancel.setOnMouseClicked(s -> {
+            Main screen = new Main();
+            try {
+                screen.start(new Stage());
+                Manage_Company.getStage().close();
+            } catch (Exception ex) {
+                Logger.getLogger(Manage_Aircraft_ManufacturerController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        
+        table_company.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                if(newValue != null){
+                    company_selected = (Company) newValue;
+                    img_company.setImage(new Image(company_selected.getImg()));
+                }else{
+                    company_selected = null;
+                }
+            }
+        });
+        
+        tf_search.setOnKeyReleased((KeyEvent e)->{
+            search();
+        });
+        
     }
     
     void language_adaptation(){
@@ -91,6 +260,7 @@ public class Manage_CompanyController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        init_table();
         add_css();
         action_buttons();
         language_adaptation();
