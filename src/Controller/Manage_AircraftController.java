@@ -24,9 +24,9 @@ public class Manage_AircraftController implements Initializable {
     @FXML private Button btn_manufacturer, btn_model, btn_aircraft;
     
     void add_css(){
-        btn_manufacturer.getStyleClass().add("glass-grey");
-        btn_model.getStyleClass().add("glass-grey");
-        btn_aircraft.getStyleClass().add("glass-grey");
+        btn_manufacturer.getStyleClass().add("button_green");
+        btn_model.getStyleClass().add("button_green");
+        btn_aircraft.getStyleClass().add("button_green");
     }
     
     void action_buttons(){
