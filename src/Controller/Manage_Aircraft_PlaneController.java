@@ -107,21 +107,33 @@ public class Manage_Aircraft_PlaneController implements Initializable {
         Model_DAO model_DAO = new Model_DAO();
         models = model_DAO.select_model();
         
-        models.forEach(s -> new_models.add(s.getModel()));
+        for (Model model : models) {
+            new_models.add(model.getModel());
+        }
+        
+        //models.forEach(s -> new_models.add(s.getModel()));
         
         cb_model.getItems().addAll(new_models);
         
         Manufacturer_DAO manufacturer_DAO = new Manufacturer_DAO();
         manufacturers = manufacturer_DAO.select_manufacturer();
         
-        manufacturers.forEach(s -> new_manufacturers.add(s.getManufacturer()));
+        for (Manufacturer manufacturer : manufacturers) {
+            new_manufacturers.add(manufacturer.getManufacturer());
+        }
+        
+        //manufacturers.forEach(s -> new_manufacturers.add(s.getManufacturer()));
         
         cb_manufacturer.getItems().addAll(new_manufacturers);
         
         Company_DAO company_DAO = new Company_DAO();
         companys = company_DAO.select_company();
         
-        companys.forEach(s -> new_companys.add(s.getName_company()));
+        for (Company company : companys) {
+            new_companys.add(company.getName_company());
+        }
+        
+        //companys.forEach(s -> new_companys.add(s.getName_company()));
         
         cb_company.getItems().addAll(new_companys);
         

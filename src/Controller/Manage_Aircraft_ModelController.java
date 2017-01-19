@@ -43,11 +43,8 @@ public class Manage_Aircraft_ModelController implements Initializable {
     
     void init_scene(){
     
-        list_origin.addAll("BRASIL", "ALEMANHA", "ESTADOS UNIDOS", "REINO UNIDO");
-        list_turbines.addAll(1, 2, 3, 4);
-        
-        cb_origin.getItems().addAll(list_origin);
-        cb_turbines.getItems().addAll(list_turbines);
+        cb_origin.getItems().addAll("BRASIL", "ALEMANHA", "ESTADOS UNIDOS", "REINO UNIDO");
+        cb_turbines.getItems().addAll(1, 2, 3, 4);
         
     }
     
