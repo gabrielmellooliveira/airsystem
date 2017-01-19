@@ -74,6 +74,8 @@ public class LoginController implements Initializable {
                             //Alert
                             Interfaces.Interface_Alert.Alert("Sucesso", "");
                             
+                            is_admin = false;
+                            
                             Main main = new Main();
                             
                             try {
