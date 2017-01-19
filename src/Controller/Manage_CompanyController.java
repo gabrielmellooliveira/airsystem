@@ -72,8 +72,7 @@ public class Manage_CompanyController implements Initializable {
     @FXML private Label lb_company, lb_cnpj, lb_city, lb_phone, lb_email;
     
     //TextFields and ComboBoxs
-    @FXML private TextField tf_company, tf_cnpj, tf_phone, tf_email;
-    @FXML private ComboBox cb_city, cb_state;
+    @FXML private TextField tf_company, tf_cnpj, tf_city, tf_phone, tf_email;
     
     //Buttons
     @FXML private Button btn_change, btn_delete_img, btn_register, btn_cancel;
@@ -86,6 +85,9 @@ public class Manage_CompanyController implements Initializable {
     private Company company_selected;
     
     private ObservableList<Company> companys;
+    
+    private ObservableList<String> list_city;
+    private ObservableList<String> list_state;
     
     void init_table(){
         col_id.setCellValueFactory(new PropertyValueFactory("id_user"));
@@ -171,14 +173,14 @@ public class Manage_CompanyController implements Initializable {
     
     void register(){
         if (tf_company.getText().equals("") || tf_cnpj.getText().equals("") || tf_phone.getText().equals("") || tf_email.getText().equals("") || 
-            cb_city.getSelectionModel().isEmpty() || cb_state.getSelectionModel().isEmpty()) {
+            tf_city.getText().equals("")) {
             
             //Alert
             Interfaces.Interface_Alert.Alert("Campos Nulos", "");
             
         } else {
             
-            Company company = new Company(tf_company.getText(), tf_cnpj.getText(), cb_city.getSelectionModel().getSelectedItem() + " - " + cb_state.getSelectionModel().getSelectedItem(),
+            Company company = new Company(tf_company.getText(), tf_cnpj.getText(), tf_city.getText(),
             tf_phone.getText(), tf_email.getText(), img_file);
                 
             Company_DAO company_DAO = new Company_DAO();

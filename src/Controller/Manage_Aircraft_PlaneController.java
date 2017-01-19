@@ -1,10 +1,14 @@
 package Controller;
 
 import DAO.Airplane_DAO;
+import DAO.Company_DAO;
+import DAO.Manufacturer_DAO;
 import DAO.Model_DAO;
 import Main.Main;
 import Main.Manage_Aircraft_Plane;
 import Model.Airplane;
+import Model.Company;
+import Model.Manufacturer;
 import Model.Model;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Paragraph;
@@ -90,6 +94,39 @@ public class Manage_Aircraft_PlaneController implements Initializable {
     
     private ObservableList<Airplane> airplanes;
 
+    private ObservableList<Model> models;
+    private ObservableList<Manufacturer> manufacturers;
+    private ObservableList<Company> companys;
+    
+    private ObservableList<String> new_models;
+    private ObservableList<String> new_manufacturers;
+    private ObservableList<String> new_companys;
+    
+    void init_scene(){
+        
+        Model_DAO model_DAO = new Model_DAO();
+        models = model_DAO.select_model();
+        
+        models.forEach(s -> new_models.add(s.getModel()));
+        
+        cb_model.getItems().addAll(new_models);
+        
+        Manufacturer_DAO manufacturer_DAO = new Manufacturer_DAO();
+        manufacturers = manufacturer_DAO.select_manufacturer();
+        
+        manufacturers.forEach(s -> new_manufacturers.add(s.getManufacturer()));
+        
+        cb_manufacturer.getItems().addAll(new_manufacturers);
+        
+        Company_DAO company_DAO = new Company_DAO();
+        companys = company_DAO.select_company();
+        
+        companys.forEach(s -> new_companys.add(s.getName_company()));
+        
+        cb_company.getItems().addAll(new_companys);
+        
+    }
+    
     void init_table(){
         col_id.setCellValueFactory(new PropertyValueFactory("id_airplane"));
         col_model.setCellValueFactory(new PropertyValueFactory("model"));        
@@ -270,6 +307,7 @@ public class Manage_Aircraft_PlaneController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        init_scene();
         init_table();
         add_css();
         action_buttons();

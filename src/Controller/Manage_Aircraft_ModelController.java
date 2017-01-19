@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -36,6 +37,19 @@ public class Manage_Aircraft_ModelController implements Initializable {
     
     //Buttons
     @FXML private Button btn_register, btn_cancel;
+    
+    ObservableList<String> list_origin; 
+    ObservableList<Integer> list_turbines;
+    
+    void init_scene(){
+    
+        list_origin.addAll("BRASIL", "ALEMANHA", "ESTADOS UNIDOS", "REINO UNIDO");
+        list_turbines.addAll(1, 2, 3, 4);
+        
+        cb_origin.getItems().addAll(list_origin);
+        cb_turbines.getItems().addAll(list_turbines);
+        
+    }
     
     void register(){
         if (tf_model.getText().equals("") || tf_number_seats.getText().equals("") || cb_origin.getSelectionModel().isEmpty() || cb_turbines.getSelectionModel().isEmpty() || dp_fabrication.getValue().equals(null)) {
@@ -93,6 +107,7 @@ public class Manage_Aircraft_ModelController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        init_scene();
         add_css();
         action_buttons();
         language_adaptation();

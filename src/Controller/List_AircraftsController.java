@@ -1,17 +1,23 @@
 package Controller;
 
+import DAO.Airplane_DAO;
 import Main.List_Aircrafts;
-import Main.Login;
+import Model.Airplane;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Side;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 /**
  * FXML Controller class
@@ -40,6 +46,61 @@ public class List_AircraftsController implements Initializable {
     
     //Button
     @FXML private Button btn_search;
+    
+    @FXML private VBox vbox_airplane;
+    
+    //@FXML private ImageView img = new ImageView();
+    
+    private ObservableList<Airplane> airplanes;
+    
+    void i(){
+        
+        Airplane_DAO airplane_DAO = new Airplane_DAO();
+        
+        airplanes = airplane_DAO.select_airplane();
+        
+        HBox hbox = new HBox();
+        hbox.setPrefSize(120, 800);
+        
+        int cont = 0;
+        
+        for(Airplane air : airplanes){
+            
+            cont++;
+            
+            if(cont <= 6){
+            
+                VBox vbox = new VBox();
+                vbox.setPrefSize(120, 120);
+
+                ImageView img = new ImageView();
+
+                img.setFitHeight(120);
+                img.setFitWidth(120);
+                img.setImage(new Image(air.getImg()));
+                img.setStyle("-fx-alignment: center;");
+
+                Label label = new Label(air.getDescription());
+                label.setPrefWidth(120);
+                label.setStyle("-fx-text-alignment: center;");
+
+                vbox.getChildren().addAll(img, label);
+                vbox.setStyle("-fx-padding: 6;");
+
+                hbox.getChildren().addAll(vbox);
+                
+            }else{
+                
+                vbox_airplane.getChildren().add(hbox);
+                
+                hbox = new HBox();
+                hbox.setPrefSize(120, 800);
+                
+            }
+            
+        }
+        
+    }
     
     void search(){
         
@@ -72,6 +133,8 @@ public class List_AircraftsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        i();
+        i();
         add_css();
         action_buttons();
         language_adaptation();

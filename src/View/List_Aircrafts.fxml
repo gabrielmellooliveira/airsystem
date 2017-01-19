@@ -7,31 +7,31 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.List_AircraftsController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.List_AircraftsController">
    <children>
-      <TabPane fx:id="tabpane_airplane" prefHeight="500.0" prefWidth="768.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="tabpane_airplane" prefHeight="500.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab fx:id="tab_adjust_menu" text="Ajustar menu">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ImageView fx:id="img_fullscreen" fitHeight="50.0" fitWidth="50.0" layoutX="399.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="img_fullscreen" fitHeight="50.0" fitWidth="50.0" layoutX="473.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Images/AumentaSecundario.png" />
                            </image></ImageView>
-                        <ImageView fx:id="img_down" fitHeight="50.0" fitWidth="50.0" layoutX="477.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="img_down" fitHeight="50.0" fitWidth="50.0" layoutX="551.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Images/setaBaixo.png" />
                            </image></ImageView>
-                        <ImageView fx:id="img_left" fitHeight="50.0" fitWidth="50.0" layoutX="537.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="img_left" fitHeight="50.0" fitWidth="50.0" layoutX="611.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Images/setaEsquerda.png" />
                            </image></ImageView>
-                        <ImageView fx:id="img_right" fitHeight="50.0" fitWidth="50.0" layoutX="596.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="img_right" fitHeight="50.0" fitWidth="50.0" layoutX="670.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Images/setaDireita.png" />
                            </image></ImageView>
-                        <ImageView fx:id="img_up" fitHeight="50.0" fitWidth="50.0" layoutX="656.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="img_up" fitHeight="50.0" fitWidth="50.0" layoutX="730.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Images/setaCima.png" />
                            </image></ImageView>
@@ -41,7 +41,14 @@
           </Tab>
           <Tab fx:id="tab_airplane" text="Aviões">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="550.0" prefWidth="800.0">
+                     <children>
+                        <ScrollPane layoutY="-2.0" prefHeight="550.0" prefWidth="800.0">
+                           <content>
+                              <VBox fx:id="vbox_airplane" prefHeight="150.0" prefWidth="800.0" />
+                           </content>
+                        </ScrollPane>
+                     </children></AnchorPane>
             </content>
           </Tab>
             <Tab text="Companhia 1">
@@ -63,8 +70,8 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="tf_search" layoutX="27.0" layoutY="26.0" prefHeight="25.0" prefWidth="593.0" />
-                        <Button fx:id="btn_search" layoutX="630.0" layoutY="26.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="113.0" text="Localizar" />
+                        <TextField fx:id="tf_search" layoutX="27.0" layoutY="26.0" prefHeight="25.0" prefWidth="616.0" />
+                        <Button fx:id="btn_search" layoutX="659.0" layoutY="26.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="113.0" text="Localizar" />
                      </children>
                   </AnchorPane>
                </content>
