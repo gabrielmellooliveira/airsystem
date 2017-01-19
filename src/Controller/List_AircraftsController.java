@@ -18,6 +18,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 /**
  * FXML Controller class
@@ -53,7 +56,7 @@ public class List_AircraftsController implements Initializable {
     
     private ObservableList<Airplane> airplanes;
     
-    void i(){
+    void init_scene(){
         
         Airplane_DAO airplane_DAO = new Airplane_DAO();
         
@@ -80,6 +83,17 @@ public class List_AircraftsController implements Initializable {
                 img.setImage(new Image(air.getImg()));
                 img.setStyle("-fx-alignment: center;");
 
+                Media media = new Media(air.getAudio());
+                MediaPlayer mediaPlayer = new MediaPlayer(media);
+                
+                img.setOnMouseClicked(s -> {
+                    if(mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING){
+                        mediaPlayer.play();
+                    }else{
+                        mediaPlayer.pause();
+                    }
+                });
+                
                 Label label = new Label(air.getDescription());
                 label.setPrefWidth(120);
                 label.setStyle("-fx-text-alignment: center;");
@@ -133,8 +147,7 @@ public class List_AircraftsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        i();
-        i();
+        init_scene();
         add_css();
         action_buttons();
         language_adaptation();

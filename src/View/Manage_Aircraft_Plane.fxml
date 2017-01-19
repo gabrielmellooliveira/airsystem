@@ -37,6 +37,11 @@
                         <Button fx:id="btn_register" layoutX="103.0" layoutY="290.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Cadastrar" />
                         <Button fx:id="btn_cancel" layoutX="268.0" layoutY="290.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Cancelar" />
                         <ImageView fx:id="img_airplane_register" fitHeight="150.0" fitWidth="150.0" layoutX="314.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="img_add_sound" fitHeight="70.0" fitWidth="70.0" layoutX="109.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Images/audio.png" />
+                           </image>
+                        </ImageView>
                         <Label fx:id="lb_model" layoutX="18.0" layoutY="36.0" prefHeight="24.0" prefWidth="90.0" text="Modelo" />
                         <Label fx:id="lb_manufacturer" layoutX="18.0" layoutY="72.0" prefHeight="24.0" prefWidth="90.0" text="Fabricante" />
                         <Label fx:id="lb_company" layoutX="18.0" layoutY="109.0" prefHeight="24.0" prefWidth="90.0" text="Companhia" />

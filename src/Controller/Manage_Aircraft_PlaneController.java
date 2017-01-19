@@ -205,6 +205,14 @@ public class Manage_Aircraft_PlaneController implements Initializable {
         }
     }
     
+    void add_audio(){
+        FileChooser fc = new FileChooser();
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Sound", "*.mp3"));
+        File file = fc.showOpenDialog(new Stage());
+        if (file != null)
+            audio_file = "file:///" + file.getAbsolutePath();
+    }
+    
     void change(){
         FileChooser fc = new FileChooser();
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.jpg", "*.jpeg", "*.png"));
