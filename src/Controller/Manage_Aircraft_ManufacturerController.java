@@ -1,5 +1,6 @@
 package Controller;
 
+import static Controller.Choose_Language.map_languages;
 import DAO.Manufacturer_DAO;
 import Main.Manage_Aircraft;
 import Main.Manage_Aircraft_Manufacturer;
@@ -80,7 +81,20 @@ public class Manage_Aircraft_ManufacturerController implements Initializable {
     }
     
     void language_adaptation(){
-        
+        lb_manufacturer.setText(map_languages.get("lb_manufacturer"));
+        lb_focus.setText(map_languages.get("lb_focus"));
+        lb_country_origin.setText(map_languages.get("lb_country_origin"));
+        lb_phone.setText(map_languages.get("lb_phone"));
+        lb_email.setText(map_languages.get("lb_email"));
+    
+        tf_manufacturer.setPromptText(map_languages.get("tf_manufacturer"));
+        tf_focus.setPromptText(map_languages.get("tf_focus"));
+        tf_country_origin.setPromptText(map_languages.get("tf_country_origin"));
+        tf_phone.setPromptText(map_languages.get("tf_phone"));
+        tf_email.setPromptText(map_languages.get("tf_email")); 
+    
+        btn_register.setText(map_languages.get("btn_register"));
+        btn_cancel.setText(map_languages.get("btn_cancel"));
     }
     
     /**

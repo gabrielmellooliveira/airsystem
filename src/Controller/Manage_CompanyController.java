@@ -1,5 +1,6 @@
 package Controller;
 
+import static Controller.Choose_Language.map_languages;
 import DAO.Company_DAO;
 import Main.Main;
 import Main.Manage_Company;
@@ -42,7 +43,7 @@ import javafx.stage.Stage;
 public class Manage_CompanyController implements Initializable {
 
     //Tabs
-    @FXML private Tab tab_cadastro, tab_pesquisa;
+    @FXML private Tab tab_register, tab_search;
     
     //TableView and TableColumns
     @FXML private TableView table_company;
@@ -252,7 +253,39 @@ public class Manage_CompanyController implements Initializable {
     }
     
     void language_adaptation(){
-        
+        tab_register.setText(map_languages.get("tab_register"));
+        tab_search.setText(map_languages.get("tab_search"));
+    
+        col_id.setText(map_languages.get("col_id"));
+        col_company.setText(map_languages.get("col_company"));
+        col_cnpj.setText(map_languages.get("col_cnpj"));
+        col_phone.setText(map_languages.get("col_phone"));
+        col_email.setText(map_languages.get("col_email"));
+    
+        lb_search.setText(map_languages.get("lb_search"));
+    
+        tf_search.setPromptText(map_languages.get("tf_search"));
+    
+        btn_search.setText(map_languages.get("btn_search"));
+        btn_generate_pdf.setText(map_languages.get("btn_generate_pdf"));
+        btn_delete.setText(map_languages.get("btn_delete"));
+    
+        lb_company.setText(map_languages.get("lb_company"));
+        lb_cnpj.setText(map_languages.get("lb_cnpj"));
+        lb_city.setText(map_languages.get("lb_city"));
+        lb_phone.setText(map_languages.get("lb_phone"));
+        lb_email.setText(map_languages.get("lb_email"));
+    
+        tf_company.setPromptText(map_languages.get("tf_company"));
+        tf_cnpj.setPromptText(map_languages.get("tf_cnpj"));
+        tf_city.setPromptText(map_languages.get("tf_city"));
+        tf_phone.setPromptText(map_languages.get("tf_phone"));
+        tf_email.setPromptText(map_languages.get("tf_email"));
+    
+        btn_change.setText(map_languages.get("btn_change"));
+        btn_delete_img.setText(map_languages.get("btn_delete_img"));
+        btn_register.setText(map_languages.get("btn_register"));
+        btn_cancel.setText(map_languages.get("btn_cancel"));
     }
     
     /**

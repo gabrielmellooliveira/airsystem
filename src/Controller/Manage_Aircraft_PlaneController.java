@@ -1,5 +1,6 @@
 package Controller;
 
+import static Controller.Choose_Language.map_languages;
 import DAO.Airplane_DAO;
 import DAO.Company_DAO;
 import DAO.Manufacturer_DAO;
@@ -49,7 +50,7 @@ import javafx.stage.Stage;
 public class Manage_Aircraft_PlaneController implements Initializable {
 
     //Tabs
-    @FXML private Tab tab_cadastro, tab_pesquisa;
+    @FXML private Tab tab_register, tab_search;
     
     //TableView and TableColumns
     @FXML private TableView table_airplane;
@@ -315,7 +316,43 @@ public class Manage_Aircraft_PlaneController implements Initializable {
     }
     
     void language_adaptation(){
-        
+        tab_register.setText(map_languages.get("tab_register"));
+        tab_search.setText(map_languages.get("tab_search"));
+    
+        col_id.setText(map_languages.get("col_id"));
+        col_model.setText(map_languages.get("col_model"));
+        col_company.setText(map_languages.get("col_company"));
+        col_manufacturer.setText(map_languages.get("col_manufacturer"));
+        col_number_seats.setText(map_languages.get("col_number_seats"));
+        col_fabrication.setText(map_languages.get("col_fabrication"));
+        col_customization.setText(map_languages.get("col_customization"));
+        col_description.setText(map_languages.get("col_description"));
+    
+        lb_search.setText(map_languages.get("lb_search"));
+    
+        tf_search.setPromptText(map_languages.get("tf_search"));
+    
+        btn_search.setText(map_languages.get("btn_search"));
+        btn_generate_pdf.setText(map_languages.get("btn_generate_pdf"));
+        btn_delete.setText(map_languages.get("btn_delete"));
+    
+        lb_model.setText(map_languages.get("lb_model"));
+        lb_manufacturer.setText(map_languages.get("lb_manufacturer"));
+        lb_company.setText(map_languages.get("lb_company"));
+        lb_customization.setText(map_languages.get("lb_customization"));
+        lb_description.setText(map_languages.get("lb_description"));
+        lb_add_sound.setText(map_languages.get("lb_add_sound"));
+    
+        tf_customization.setPromptText(map_languages.get("tf_customization"));
+        tf_description.setPromptText(map_languages.get("tf_description"));
+        cb_model.setPromptText(map_languages.get("cb_model"));
+        cb_manufacturer.setPromptText(map_languages.get("cb_manufacturer"));
+        cb_company.setPromptText(map_languages.get("cb_company"));
+    
+        btn_change.setText(map_languages.get("btn_change"));
+        btn_delete_img.setText(map_languages.get("btn_delete_img"));
+        btn_register.setText(map_languages.get("btn_register"));
+        btn_cancel.setText(map_languages.get("btn_cancel"));
     }
     
     /**

@@ -1,5 +1,6 @@
 package Controller;
 
+import static Controller.Choose_Language.map_languages;
 import DAO.Model_DAO;
 import Main.Manage_Aircraft;
 import Main.Manage_Aircraft_Model;
@@ -43,7 +44,7 @@ public class Manage_Aircraft_ModelController implements Initializable {
     
     void init_scene(){
     
-        cb_origin.getItems().addAll("BRASIL", "ALEMANHA", "ESTADOS UNIDOS", "REINO UNIDO");
+        cb_origin.getItems().addAll(map_languages.get("br"), map_languages.get("gr"), map_languages.get("us"), map_languages.get("uk"));
         cb_turbines.getItems().addAll(1, 2, 3, 4);
         
     }
@@ -95,7 +96,20 @@ public class Manage_Aircraft_ModelController implements Initializable {
     }
     
     void language_adaptation(){
-        
+        lb_model.setText(map_languages.get("lb_model"));
+        lb_number_seats.setText(map_languages.get("lb_number_seats"));
+        lb_origin.setText(map_languages.get("lb_origin"));
+        lb_fabrication.setText(map_languages.get("lb_fabrication"));
+        lb_turbines.setText(map_languages.get("lb_turbines"));
+    
+        tf_model.setPromptText(map_languages.get("tf_model"));
+        tf_number_seats.setPromptText(map_languages.get("tf_number_seats"));
+        cb_origin.setPromptText(map_languages.get("cb_origin"));
+        cb_turbines.setPromptText(map_languages.get("cb_turbines"));
+        dp_fabrication.setPromptText(map_languages.get("dp_fabrication"));
+    
+        btn_register.setText(map_languages.get("btn_register"));
+        btn_cancel.setText(map_languages.get("btn_cancel"));
     }
     
     /**

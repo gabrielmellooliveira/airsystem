@@ -1,5 +1,6 @@
 package Controller;
 
+import static Controller.Choose_Language.map_languages;
 import Main.Manage_Aircraft;
 import Main.Manage_Aircraft_Manufacturer;
 import Main.Manage_Aircraft_Model;
@@ -62,7 +63,9 @@ public class Manage_AircraftController implements Initializable {
     }
     
     void language_adaptation(){
-        
+        btn_manufacturer.setText(map_languages.get("btn_manufacturer"));
+        btn_model.setText(map_languages.get("btn_model"));
+        btn_aircraft.setText(map_languages.get("btn_aircraft"));
     }
     
     /**

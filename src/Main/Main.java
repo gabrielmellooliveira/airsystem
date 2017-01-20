@@ -1,5 +1,6 @@
 package Main;
 
+import static Controller.Choose_Language.map_languages;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +16,7 @@ public class Main extends Application {
     
     public String fxml = "Main";
     
-    public String title_main;
+    public String title_main = map_languages.get("title_main");;
     
     public static Stage stage;
 

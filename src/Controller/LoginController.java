@@ -1,5 +1,6 @@
 package Controller;
 
+import static Controller.Choose_Language.map_languages;
 import DAO.User_DAO;
 import Main.*;
 import Model.User;
@@ -130,7 +131,11 @@ public class LoginController implements Initializable {
     } 
     
     void language_adaptation(){
-        
+        tf_user.setPromptText(map_languages.get("tf_user"));
+        pf_password.setPromptText(map_languages.get("pf_password"));
+        btn_enter.setText(map_languages.get("btn_enter"));
+        btn_exit.setText(map_languages.get("btn_exit")); 
+        btn_new_user.setText(map_languages.get("btn_new_user"));
     }
     
     @Override

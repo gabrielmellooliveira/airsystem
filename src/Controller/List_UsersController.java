@@ -1,5 +1,6 @@
 package Controller;
 
+import static Controller.Choose_Language.map_languages;
 import DAO.User_DAO;
 import Main.List_Users;
 import Main.Main;
@@ -206,6 +207,37 @@ public class List_UsersController implements Initializable {
     
     void language_adaptation(){
         
+        col_id.setText(map_languages.get("col_id"));
+        col_name.setText(map_languages.get("col_name"));
+        col_last_name.setText(map_languages.get("col_last_name"));
+    
+        lb_user_data.setText(map_languages.get("lb_user_data"));
+        
+        lb_name.setText(map_languages.get("lb_name"));
+        lb_last_name.setText(map_languages.get("lb_last_name"));
+        lb_address.setText(map_languages.get("lb_address"));
+        lb_date_birth.setText(map_languages.get("lb_date_birth"));
+        lb_phone.setText(map_languages.get("lb_phone"));
+        lb_user.setText(map_languages.get("lb_user"));
+        lb_password.setText(map_languages.get("lb_password"));
+        lb_password_confirm.setText(map_languages.get("lb_password_confirm"));
+    
+        tf_name.setPromptText(map_languages.get("tf_name"));
+        tf_last_name.setPromptText(map_languages.get("tf_last_name"));
+        tf_address.setPromptText(map_languages.get("tf_address"));
+        tf_phone.setPromptText(map_languages.get("tf_phone"));
+        tf_user.setPromptText(map_languages.get("tf_user"));
+        pf_password.setPromptText(map_languages.get("pf_password"));
+        pf_password_confirm.setPromptText(map_languages.get("pf_password_confirm"));
+        dp_date_birth.setPromptText(map_languages.get("dp_date_birth"));
+    
+        btn_change.setText(map_languages.get("btn_change"));
+        btn_delete.setText(map_languages.get("btn_delete"));
+        btn_back.setText(map_languages.get("btn_back"));
+        btn_new.setText(map_languages.get("btn_new"));
+        btn_edit.setText(map_languages.get("btn_edit"));
+        btn_delete_user.setText(map_languages.get("btn_delete_user"));
+    
     }
     
     /**

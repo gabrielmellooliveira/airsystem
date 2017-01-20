@@ -1,8 +1,11 @@
 package Controller;
 
+import static Controller.Choose_Language.map_languages;
 import DAO.Airplane_DAO;
+import DAO.Company_DAO;
 import Main.List_Aircrafts;
 import Model.Airplane;
+import Model.Company;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -54,9 +57,24 @@ public class List_AircraftsController implements Initializable {
     
     //@FXML private ImageView img = new ImageView();
     
+    private ObservableList<Company> companys;
+    
     private ObservableList<Airplane> airplanes;
     
-    void init_scene(){
+    void init_scene_company(){
+        
+        Company_DAO company_DAO = new Company_DAO();
+        companys = company_DAO.select_company();
+        
+        for (Company company : companys) {
+            Tab tab = new Tab();
+            tab.setText(company.getName_company());
+            tabpane_airplane.getTabs().add(tab);
+        }
+        
+    }
+    
+    void init_scene_airplane(){
         
         Airplane_DAO airplane_DAO = new Airplane_DAO();
         
@@ -140,7 +158,13 @@ public class List_AircraftsController implements Initializable {
     }
     
     void language_adaptation(){
-        
+        tab_adjust_menu.setText(map_languages.get("tab_adjust_menu"));
+        tab_airplane.setText(map_languages.get("tab_airplane"));
+        tab_search.setText(map_languages.get("tab_search"));
+    
+        tf_search.setPromptText(map_languages.get("tf_search"));
+    
+        btn_search.setText(map_languages.get("btn_search"));
     }
     
     /**
@@ -149,7 +173,8 @@ public class List_AircraftsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        init_scene();
+        init_scene_company();
+        init_scene_airplane();
         add_css();
         action_buttons();
         language_adaptation();

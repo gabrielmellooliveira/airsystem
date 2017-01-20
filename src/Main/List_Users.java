@@ -1,5 +1,6 @@
 package Main;
 
+import static Controller.Choose_Language.map_languages;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +16,7 @@ public class List_Users extends Application {
     
     public String fxml = "List_Users";
     
-    public String title_list_users;
+    public String title_list_users = map_languages.get("title_list_users");;
     
     public static Stage stage;
 

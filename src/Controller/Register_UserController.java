@@ -1,5 +1,6 @@
 package Controller;
 
+import static Controller.Choose_Language.map_languages;
 import DAO.User_DAO;
 import Main.Login;
 import Main.Register_User;
@@ -106,7 +107,26 @@ public class Register_UserController implements Initializable {
     }
     
     void language_adaptation(){
-        
+        lb_name.setText(map_languages.get("lb_name"));
+        lb_address.setText(map_languages.get("lb_address"));
+        lb_birth.setText(map_languages.get("lb_birth"));
+        lb_user.setText(map_languages.get("lb_user"));
+        lb_password.setText(map_languages.get("lb_password"));
+        lb_password_confirm.setText(map_languages.get("lb_password_confirm"));
+    
+        tf_name.setPromptText(map_languages.get("tf_name"));
+        tf_last_name.setPromptText(map_languages.get("tf_last_name"));
+        tf_address.setPromptText(map_languages.get("tf_address"));
+        tf_address_number.setPromptText(map_languages.get("tf_address_number"));
+        tf_user.setPromptText(map_languages.get("tf_user"));
+        pf_password.setPromptText(map_languages.get("pf_password"));
+        pf_password_confirm.setPromptText(map_languages.get("pf_password_confirm"));
+        dp_date_birth.setPromptText(map_languages.get("dp_date_birth"));
+    
+        btn_change.setText(map_languages.get("btn_change"));
+        btn_delete.setText(map_languages.get("btn_delete"));
+        btn_register.setText(map_languages.get("btn_register"));
+        btn_cancel.setText(map_languages.get("btn_cancel"));
     }
     
     /**

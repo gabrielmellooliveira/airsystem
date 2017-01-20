@@ -1,14 +1,10 @@
 package Main;
 
+import static Controller.Choose_Language.map_languages;
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -20,7 +16,7 @@ public class List_Aircrafts extends Application {
     
     public String fxml = "List_Aircrafts";
     
-    public String title_list_aircrafts;
+    public String title_list_aircrafts = map_languages.get("title_list_aircrafts");
     
     public static Stage stage;
 

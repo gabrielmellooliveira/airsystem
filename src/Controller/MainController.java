@@ -1,5 +1,6 @@
 package Controller;
 
+import static Controller.Choose_Language.map_languages;
 import Main.List_Aircrafts;
 import Main.List_Users;
 import Main.Main;
@@ -81,7 +82,10 @@ public class MainController implements Initializable {
     }
     
     void language_adaptation(){
-        
+        btn_list_users.setText(map_languages.get("btn_list_users"));
+        btn_list_airplanes.setText(map_languages.get("btn_list_airplanes"));
+        btn_manage_company.setText(map_languages.get("btn_manage_company"));
+        btn_manage_airplane.setText(map_languages.get("btn_manage_airplane"));
     }
     
     /**

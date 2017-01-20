@@ -1,5 +1,6 @@
 package Main;
 
+import static Controller.Choose_Language.map_languages;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +16,7 @@ public class Manage_Aircraft_Manufacturer extends Application {
     
     public String fxml = "Manage_Aircraft_Manufacturer";
     
-    public String title_manage_aircraft_manufacturer;
+    public String title_manage_aircraft_manufacturer = map_languages.get("title_manage_aircraft_manufacturer");;
     
     public static Stage stage;
 
