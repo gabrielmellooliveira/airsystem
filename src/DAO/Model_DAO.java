@@ -95,7 +95,9 @@ public class Model_DAO {
             stmt.setString(1, model_especific);
             
             ResultSet rs = stmt.executeQuery();
-                        
+                       
+            rs.next();
+            
             Model model = new Model(
                 rs.getInt("id_model"),
                 rs.getString("model"),

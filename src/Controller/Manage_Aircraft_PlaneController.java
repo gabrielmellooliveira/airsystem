@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -94,48 +95,42 @@ public class Manage_Aircraft_PlaneController implements Initializable {
     
     private ObservableList<Airplane> airplanes;
 
-    private ObservableList<Model> models;
-    private ObservableList<Manufacturer> manufacturers;
-    private ObservableList<Company> companys;
+    private List<Model> models;
+    private List<Manufacturer> manufacturers;
+    private List<Company> companys;
     
-    private ObservableList<String> new_models;
-    private ObservableList<String> new_manufacturers;
-    private ObservableList<String> new_companys;
+    private List<String> new_models;
+    private List<String> new_manufacturers;
+    private List<String> new_companys;
     
     void init_scene(){
         
         Model_DAO model_DAO = new Model_DAO();
         models = model_DAO.select_model();
         
-        for (Model model : models) {
-            new_models.add(model.getModel());
-        }
+        models.forEach((model) -> {
+            cb_model.getItems().addAll(model.getModel());
+        });
         
         //models.forEach(s -> new_models.add(s.getModel()));
-        
-        cb_model.getItems().addAll(new_models);
         
         Manufacturer_DAO manufacturer_DAO = new Manufacturer_DAO();
         manufacturers = manufacturer_DAO.select_manufacturer();
         
         for (Manufacturer manufacturer : manufacturers) {
-            new_manufacturers.add(manufacturer.getManufacturer());
+            cb_manufacturer.getItems().addAll(manufacturer.getManufacturer());
         }
         
         //manufacturers.forEach(s -> new_manufacturers.add(s.getManufacturer()));
-        
-        cb_manufacturer.getItems().addAll(new_manufacturers);
         
         Company_DAO company_DAO = new Company_DAO();
         companys = company_DAO.select_company();
         
         for (Company company : companys) {
-            new_companys.add(company.getName_company());
+            cb_company.getItems().addAll(company.getName_company());
         }
         
         //companys.forEach(s -> new_companys.add(s.getName_company()));
-        
-        cb_company.getItems().addAll(new_companys);
         
     }
     
@@ -299,6 +294,8 @@ public class Manage_Aircraft_PlaneController implements Initializable {
                 Logger.getLogger(Manage_Aircraft_ManufacturerController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+        
+        img_add_sound.setOnMouseClicked(s -> add_audio());
         
         table_airplane.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override

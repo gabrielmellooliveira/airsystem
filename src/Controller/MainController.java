@@ -25,9 +25,9 @@ public class MainController implements Initializable {
     
     void manage_permission(){
         if(LoginController.Is_admin() == true){
-            btn_list_users.setCancelButton(true);
+            btn_list_users.setVisible(true);
         }else{
-            btn_list_users.setCancelButton(false);
+            btn_list_users.setVisible(false);
         }
     }
     

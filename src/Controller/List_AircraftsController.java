@@ -3,6 +3,7 @@ package Controller;
 import DAO.Airplane_DAO;
 import Main.List_Aircrafts;
 import Model.Airplane;
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
@@ -18,7 +19,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -83,18 +83,18 @@ public class List_AircraftsController implements Initializable {
                 img.setImage(new Image(air.getImg()));
                 img.setStyle("-fx-alignment: center;");
 
-                Media media = new Media(air.getAudio());
+                Media media = new Media(new File(air.getAudio().substring(8)).toURI().toString());
                 MediaPlayer mediaPlayer = new MediaPlayer(media);
                 
                 img.setOnMouseClicked(s -> {
-                    if(mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING){
+                    if(mediaPlayer.getStatus() != MediaPlayer.Status.PLAYING){
                         mediaPlayer.play();
                     }else{
                         mediaPlayer.pause();
                     }
                 });
                 
-                Label label = new Label(air.getDescription());
+                Label label = new Label(air.getDescription());//air.getDescription());
                 label.setPrefWidth(120);
                 label.setStyle("-fx-text-alignment: center;");
 
@@ -113,6 +113,8 @@ public class List_AircraftsController implements Initializable {
             }
             
         }
+        
+        vbox_airplane.getChildren().add(hbox);
         
     }
     

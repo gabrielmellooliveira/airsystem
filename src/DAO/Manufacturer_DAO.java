@@ -62,7 +62,7 @@ public class Manufacturer_DAO {
             while(rs.next()){
  
                 Manufacturer manufacturer = new Manufacturer(
-                    rs.getInt("manufacturer"),
+                    rs.getInt("id_manufacturer"),
                     rs.getString("manufacturer"),
                     rs.getString("focus"),
                     rs.getString("country_origin"),

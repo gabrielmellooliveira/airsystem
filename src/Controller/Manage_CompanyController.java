@@ -90,11 +90,11 @@ public class Manage_CompanyController implements Initializable {
     private ObservableList<String> list_state;
     
     void init_table(){
-        col_id.setCellValueFactory(new PropertyValueFactory("id_user"));
-        col_company.setCellValueFactory(new PropertyValueFactory("name"));        
-        col_cnpj.setCellValueFactory(new PropertyValueFactory("last_name"));
-        col_phone.setCellValueFactory(new PropertyValueFactory("name"));        
-        col_email.setCellValueFactory(new PropertyValueFactory("last_name"));
+        col_id.setCellValueFactory(new PropertyValueFactory("id_company"));
+        col_company.setCellValueFactory(new PropertyValueFactory("name_company"));        
+        col_cnpj.setCellValueFactory(new PropertyValueFactory("cnpj"));
+        col_phone.setCellValueFactory(new PropertyValueFactory("phone"));        
+        col_email.setCellValueFactory(new PropertyValueFactory("email"));
        
         Company_DAO company_DAO = new Company_DAO();       
         companys = company_DAO.select_company();
