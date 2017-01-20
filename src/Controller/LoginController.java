@@ -48,7 +48,7 @@ public class LoginController implements Initializable {
         if (tf_user.getText().equals("") || pf_password.getText().equals("")) {
           
             //Alert
-            Interfaces.Interface_Alert.Alert("Campos Nulos", "");
+            Interfaces.Interface_Alert.Alert(map_languages.get("null_fields"), map_languages.get("null_fields_message"));
             
         } else {
         
@@ -73,7 +73,7 @@ public class LoginController implements Initializable {
                         if (list_user.getPassword().equals(pf_password.getText())) {
                       
                             //Alert
-                            Interfaces.Interface_Alert.Alert("Sucesso", "");
+                            Interfaces.Interface_Alert.Alert(map_languages.get("login_success"), map_languages.get("login_success_message"));
                             
                             is_admin = false;
                             
@@ -90,7 +90,7 @@ public class LoginController implements Initializable {
                         }else{
                         
                             //Alert
-                            Interfaces.Interface_Alert.Alert("Erro - usuário inválido", "");
+                            Interfaces.Interface_Alert.Alert(map_languages.get("invalid_fields"), map_languages.get("invalid_fields_message"));
                             
                         }
                     
@@ -103,13 +103,13 @@ public class LoginController implements Initializable {
     }
     
     void add_css(){
-        btn_enter.getStyleClass().add("glass-grey");
+        btn_enter.getStyleClass().add("button_green");
         btn_exit.getStyleClass().add("button_red");
         btn_new_user.getStyleClass().add("button_green");
     }
     
     void action_buttons(){
-        cb_language.getItems().addAll("Português", "Inglês");  //Arrumar tradução
+        cb_language.getItems().addAll("Portuguese", "English");  //Arrumar tradução
         cb_language.setValue(cb_language.getItems().get(0));
         cb_language.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override

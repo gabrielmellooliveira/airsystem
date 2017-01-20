@@ -105,10 +105,17 @@ public class List_AircraftsController implements Initializable {
                 MediaPlayer mediaPlayer = new MediaPlayer(media);
                 
                 img.setOnMouseClicked(s -> {
-                    if(mediaPlayer.getStatus() != MediaPlayer.Status.PLAYING){
-                        mediaPlayer.play();
+                    if(mediaPlayer == null){
+                    
+                        //Alert
+                        Interfaces.Interface_Alert.Alert(map_languages.get("audio_error"), map_languages.get("audio_error_message"));
+                        
                     }else{
-                        mediaPlayer.pause();
+                        if(mediaPlayer.getStatus() != MediaPlayer.Status.PLAYING){
+                            mediaPlayer.play();
+                        }else{
+                            mediaPlayer.pause();
+                        }
                     }
                 });
                 

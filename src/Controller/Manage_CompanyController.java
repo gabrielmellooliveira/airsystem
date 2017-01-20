@@ -136,7 +136,7 @@ public class Manage_CompanyController implements Initializable {
                 }
 
                 //Alert
-                Interfaces.Interface_Alert.Alert("PDF gerado com sucesso", "");
+                Interfaces.Interface_Alert.Alert(map_languages.get("pdf_success"), map_languages.get("pdf_success_message"));
 
             } catch (Exception e) {
 
@@ -145,7 +145,7 @@ public class Manage_CompanyController implements Initializable {
             }
         }else{
             //Alert
-            Interfaces.Interface_Alert.Alert("Escolha um local para salvar o PDF", "");
+            Interfaces.Interface_Alert.Alert(map_languages.get("pdf_error"), map_languages.get("pdf_error_message"));
         }
         
     }
@@ -156,10 +156,12 @@ public class Manage_CompanyController implements Initializable {
             company_DAO.deleta_company(company_selected);
             
             //Alert
-            Interfaces.Interface_Alert.Alert("Companhia deletada com sucesso", "");
+            Interfaces.Interface_Alert.Alert(map_languages.get("delete_success"), map_languages.get("delete_success_message"));
             
         } catch (SQLException ex) {
             Logger.getLogger(List_UsersController.class.getName()).log(Level.SEVERE, null, ex);
+            //Alert
+            Interfaces.Interface_Alert.Alert(map_languages.get("delete_error"), map_languages.get("delete_error_message"));
         }
     }
     
@@ -177,7 +179,7 @@ public class Manage_CompanyController implements Initializable {
             tf_city.getText().equals("")) {
             
             //Alert
-            Interfaces.Interface_Alert.Alert("Campos Nulos", "");
+            Interfaces.Interface_Alert.Alert(map_languages.get("null_fields"), map_languages.get("null_fields_message"));
             
         } else {
             
@@ -189,13 +191,13 @@ public class Manage_CompanyController implements Initializable {
                 company_DAO.insert_company(company);
                     
                 //Alert
-                Interfaces.Interface_Alert.Alert("Registrado com sucesso", "");
+                Interfaces.Interface_Alert.Alert(map_languages.get("register_success"), map_languages.get("register_success_message"));
                 
             } catch (SQLException ex) {
                 Logger.getLogger(Register_UserController.class.getName()).log(Level.SEVERE, null, ex);
                 
                 //Alert
-                Interfaces.Interface_Alert.Alert("Erro ao registrar", "");
+                Interfaces.Interface_Alert.Alert(map_languages.get("register_error"), map_languages.get("register_error_message"));
             }
             
         }

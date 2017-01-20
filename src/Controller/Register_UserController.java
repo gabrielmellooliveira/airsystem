@@ -62,7 +62,7 @@ public class Register_UserController implements Initializable {
             pf_password_confirm.getText().equals("") || dp_date_birth.getValue() == null) {
             
             //Alert
-            Interfaces.Interface_Alert.Alert("Campos Nulos", "");
+            Interfaces.Interface_Alert.Alert(map_languages.get("null_fields"), map_languages.get("null_fields_message"));
             
         } else {
             
@@ -76,7 +76,7 @@ public class Register_UserController implements Initializable {
                     user_DAO.insert_user(user);
                     
                     //Alert
-                    Interfaces.Interface_Alert.Alert("Registrado com sucesso", "");
+                    Interfaces.Interface_Alert.Alert(map_languages.get("register_success"), map_languages.get("register_success_message"));
                     
                 } catch (SQLException ex) {
                     Logger.getLogger(Register_UserController.class.getName()).log(Level.SEVERE, null, ex);
@@ -85,7 +85,7 @@ public class Register_UserController implements Initializable {
             } else {
                 
                 //Alert
-                Interfaces.Interface_Alert.Alert("Erro ao registrar", "");
+                Interfaces.Interface_Alert.Alert(map_languages.get("register_error"), map_languages.get("register_error_message"));
                 
             }
             

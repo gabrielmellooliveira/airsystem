@@ -87,7 +87,7 @@ public class List_UsersController implements Initializable {
             pf_password_confirm.getText().equals("") || dp_date_birth.getValue().equals(null)) {
             
             //Alert
-            Interfaces.Interface_Alert.Alert("Campos Nulos", "");
+            Interfaces.Interface_Alert.Alert(map_languages.get("null_fields"), map_languages.get("null_fields_message"));
             
         } else {
             
@@ -101,7 +101,7 @@ public class List_UsersController implements Initializable {
                     user_DAO.insert_user(user);
                     
                     //Alert
-                    Interfaces.Interface_Alert.Alert("Registrado com sucesso", "");
+                    Interfaces.Interface_Alert.Alert(map_languages.get("register_success"), map_languages.get("register_success_message"));
                 
                 } catch (SQLException ex) {
                     Logger.getLogger(Register_UserController.class.getName()).log(Level.SEVERE, null, ex);
@@ -110,7 +110,7 @@ public class List_UsersController implements Initializable {
             } else {
                 
                 //Alert
-                Interfaces.Interface_Alert.Alert("Erro ao registrar", "");
+                Interfaces.Interface_Alert.Alert(map_languages.get("register_error"), map_languages.get("register_error_message"));
                 
             }
             
@@ -122,7 +122,7 @@ public class List_UsersController implements Initializable {
             pf_password_confirm.getText().equals("") || dp_date_birth.getValue().equals(null)) {
         
             //Alert
-            Interfaces.Interface_Alert.Alert("Campos Nulos", "");
+            Interfaces.Interface_Alert.Alert(map_languages.get("null_fields"), map_languages.get("null_fields_message"));
             
         } else {
             
@@ -136,13 +136,17 @@ public class List_UsersController implements Initializable {
                     user_DAO.edit_user(user);
                     
                     //Alert
-                    Interfaces.Interface_Alert.Alert("Editado com sucesso", "");
+                    Interfaces.Interface_Alert.Alert(map_languages.get("edit_success"), map_languages.get("edit_success_message"));
                     
                 } catch (SQLException ex) {
                     Logger.getLogger(Register_UserController.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
             } else {
+                
+                //Alert
+                Interfaces.Interface_Alert.Alert(map_languages.get("edit_error"), map_languages.get("edit_error_message"));
+                
             }
             
         }
@@ -154,10 +158,12 @@ public class List_UsersController implements Initializable {
             user_DAO.deleta_user(user_selected);
             
             //Alert
-            Interfaces.Interface_Alert.Alert("Usuário deletado com sucesso", "");
+            Interfaces.Interface_Alert.Alert(map_languages.get("delete_success"), map_languages.get("delete_success_message"));
             
         } catch (SQLException ex) {
             Logger.getLogger(List_UsersController.class.getName()).log(Level.SEVERE, null, ex);
+            //Alert
+            Interfaces.Interface_Alert.Alert(map_languages.get("delete_error"), map_languages.get("delete_error_message"));
         }
     }
     

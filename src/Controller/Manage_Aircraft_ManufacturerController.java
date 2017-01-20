@@ -38,7 +38,7 @@ public class Manage_Aircraft_ManufacturerController implements Initializable {
             tf_phone.getText().equals("") || tf_email.getText().equals("")) {
             
             //Alert
-            Interfaces.Interface_Alert.Alert("Campos Nulos", "");
+            Interfaces.Interface_Alert.Alert(map_languages.get("null_fields"), map_languages.get("null_fields_message"));
             
         } else {
             
@@ -50,13 +50,13 @@ public class Manage_Aircraft_ManufacturerController implements Initializable {
                 manufacturer_DAO.insert_manufacturer(manufacturer);
                     
                 //Alert
-                Interfaces.Interface_Alert.Alert("Registrado com sucesso", "");
+                Interfaces.Interface_Alert.Alert(map_languages.get("register_success"), map_languages.get("register_success_message"));
                 
             } catch (SQLException ex) {
                 Logger.getLogger(Register_UserController.class.getName()).log(Level.SEVERE, null, ex);
                     
                 //Alert
-                Interfaces.Interface_Alert.Alert("Erro ao registrar", "");
+                Interfaces.Interface_Alert.Alert(map_languages.get("register_error"), map_languages.get("register_error_message"));
                 
             }
         }
