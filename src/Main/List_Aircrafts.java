@@ -52,8 +52,8 @@ public class List_Aircrafts extends Application {
         this.stage = stage;
         stage.setTitle(title_list_aircrafts + " - AirSystem");
         stage.setResizable(false);
-        stage.setMaxHeight(600);
-        stage.setMaxWidth(800);
+        //stage.setMaxHeight(600);
+        //stage.setMaxWidth(800);
         
         stage.show();
     }

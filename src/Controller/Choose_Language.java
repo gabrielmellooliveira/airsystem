@@ -43,7 +43,7 @@ public class Choose_Language {
                 is = new FileInputStream("C:\\Users\\Gabriel\\Desktop\\AirSystem\\src\\language\\english.txt");
             } 
 
-            map_languages = new HashMap();
+            map_languages = new HashMap<String, String>();
             
             InputStreamReader isr = new InputStreamReader(is);
             br = new BufferedReader(isr);
