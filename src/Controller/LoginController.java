@@ -4,6 +4,7 @@ import static Controller.Choose_Language.map_languages;
 import DAO.User_DAO;
 import Main.*;
 import Model.User;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -53,6 +54,13 @@ public class LoginController implements Initializable {
         } else {
         
             if (tf_user.getText().equals("admin") && pf_password.getText().equals("admin")){
+                
+                try {
+                    Choose_Language.Choose_Language(cb_language.getValue());
+                } catch (IOException ex) {
+                    Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
                 is_admin = true;
                 Main screen = new Main();
                 try { 
@@ -72,6 +80,12 @@ public class LoginController implements Initializable {
                     
                         if (list_user.getPassword().equals(pf_password.getText())) {
                       
+                            try {
+                                Choose_Language.Choose_Language(cb_language.getValue());
+                            } catch (IOException ex) {
+                                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            
                             //Alert
                             Interfaces.Interface_Alert.Alert(map_languages.get("login_success"), map_languages.get("login_success_message"));
                             
@@ -140,7 +154,11 @@ public class LoginController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        try {
+            Choose_Language.Choose_Language("Portuguese");
+        } catch (IOException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         add_css();
         action_buttons();
         language_adaptation();

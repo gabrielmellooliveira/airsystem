@@ -14,39 +14,8 @@ import java.util.Map;
  */
 
 public class Choose_Language {
-public static HashMap<String, String> Idioma_Escolhido(String idioma) throws IOException{
-        HashMap<String, String> map_idioma = new HashMap();
-        InputStream is = null;
-        BufferedReader br = null;
-        
-        try{
-        
-            if(idioma.equals("Portugues")){
-                is = new FileInputStream("C:\\Users\\User\\Desktop\\JavaFX_Multi_Idiomas\\src\\javafx_multi_idiomas\\portugues.txt");
-            }if(idioma.equals("Ingles")){
-                is = new FileInputStream("C:\\Users\\User\\Desktop\\JavaFX_Multi_Idiomas\\src\\javafx_multi_idiomas\\ingles.txt");
-            } 
 
-            InputStreamReader isr = new InputStreamReader(is);
-            br = new BufferedReader(isr);
-
-            String s = br.readLine(); // primeira linha
-
-            while (s != null) {
-                String palavras[] = s.split("=");
-                map_idioma.put(palavras[0], palavras[1]);
-                s = br.readLine();
-            }
-        
-        }catch(IOException e){
-            System.out.println("Erro: " + e.getMessage());
-        }finally{
-            br.close();
-        }
-        
-        return map_idioma;
-    }
-    public Choose_Language(String language){
+    public static void Choose_Language(String language) throws IOException{
         
         switch(language){
           
@@ -61,8 +30,37 @@ public static HashMap<String, String> Idioma_Escolhido(String idioma) throws IOE
         
     }
     
-    private void Select_language(String language){
+    public static void Select_language(String language) throws IOException{
+     
+        InputStream is = null;
+        BufferedReader br = null;
         
+        try{
+        
+            if(language.equals("Portuguese")){
+                is = new FileInputStream("C:\\Users\\Gabriel\\Desktop\\AirSystem\\src\\language\\portuguese.txt");
+            }else if(language.equals("English")){
+                is = new FileInputStream("C:\\Users\\Gabriel\\Desktop\\AirSystem\\src\\language\\english.txt");
+            } 
+
+            map_languages = new HashMap();
+            
+            InputStreamReader isr = new InputStreamReader(is);
+            br = new BufferedReader(isr);
+
+            String s = br.readLine(); // primeira linha
+
+            while (s != null) {
+                String palavras[] = s.split("=");
+                map_languages.put(palavras[0], palavras[1]);
+                s = br.readLine();
+            }
+        
+        }catch(IOException e){
+            System.out.println("Error: " + e.getMessage());
+        }finally{
+            br.close();
+        }
     }
 
     public static Map<String, String> map_languages = new HashMap<>();
@@ -74,7 +72,5 @@ public static HashMap<String, String> Idioma_Escolhido(String idioma) throws IOE
     public void setMap_languages(Map<String, String> map_languages) {
         this.map_languages = map_languages;
     }
-    
-    
-    
+     
 }
