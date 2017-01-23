@@ -9,10 +9,13 @@ import Model.Company;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.animation.FadeTransition;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Side;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
@@ -20,10 +23,12 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 
 /**
  * FXML Controller class
@@ -70,6 +75,72 @@ public class List_AircraftsController implements Initializable {
             Tab tab = new Tab();
             tab.setText(company.getName_company());
             tabpane_airplane.getTabs().add(tab);
+            
+            /*Airplane_DAO airplane_DAO = new Airplane_DAO();
+        
+            airplanes = airplane_DAO.select_airplane();
+
+            HBox hbox = new HBox();
+            hbox.setPrefSize(120, 800);
+
+            int cont = 0;
+
+            for(Airplane air : airplanes){
+
+                cont++;
+
+                if(cont <= 6){
+
+                    VBox vbox = new VBox();
+                    vbox.setPrefSize(120, 120);
+
+                    ImageView img = new ImageView();
+
+                    img.setFitHeight(120);
+                    img.setFitWidth(120);
+                    img.setImage(new Image(air.getImg()));
+                    img.setStyle("-fx-alignment: center;");
+
+                    Media media = new Media(new File(air.getAudio().substring(8)).toURI().toString());
+                    MediaPlayer mediaPlayer = new MediaPlayer(media);
+
+                    img.setOnMouseClicked(s -> {
+                        if(mediaPlayer == null){
+
+                            //Alert
+                            Interfaces.Interface_Alert.Alert(map_languages.get("audio_error"), map_languages.get("audio_error_message"));
+
+                        }else{
+                            if(mediaPlayer.getStatus() != MediaPlayer.Status.PLAYING){
+                                mediaPlayer.play();
+                            }else{
+                                mediaPlayer.pause();
+                            }
+                        }
+                    });
+
+                    Label label = new Label(air.getDescription());//air.getDescription());
+                    label.setPrefWidth(120);
+                    label.setStyle("-fx-text-alignment: center;");
+
+                    vbox.getChildren().addAll(img, label);
+                    vbox.setStyle("-fx-padding: 6;");
+
+                    hbox.getChildren().addAll(vbox);
+
+                }else{
+
+                    vbox_airplane.getChildren().add(hbox);
+
+                    hbox = new HBox();
+                    hbox.setPrefSize(120, 800);
+
+                }
+
+            }
+
+            vbox_airplane.getChildren().add(hbox);*/
+            
         }
         
     }
@@ -101,8 +172,14 @@ public class List_AircraftsController implements Initializable {
                 img.setImage(new Image(air.getImg()));
                 img.setStyle("-fx-alignment: center;");
 
+                Label label = new Label(air.getDescription());
+                label.setPrefWidth(120);
+                label.setStyle("-fx-text-alignment: center;");
+                
                 Media media = new Media(new File(air.getAudio().substring(8)).toURI().toString());
                 MediaPlayer mediaPlayer = new MediaPlayer(media);
+                
+                img.setOpacity(0.2);
                 
                 img.setOnMouseClicked(s -> {
                     if(mediaPlayer == null){
@@ -119,10 +196,20 @@ public class List_AircraftsController implements Initializable {
                     }
                 });
                 
-                Label label = new Label(air.getDescription());//air.getDescription());
-                label.setPrefWidth(120);
-                label.setStyle("-fx-text-alignment: center;");
-
+                img.setOnMouseEntered(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        initAparece();
+                    }
+                });
+     
+                img.setOnMouseExited(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        initDesaparece();
+                    }
+                });
+                
                 vbox.getChildren().addAll(img, label);
                 vbox.setStyle("-fx-padding: 6;");
 
@@ -185,6 +272,31 @@ public class List_AircraftsController implements Initializable {
         add_css();
         action_buttons();
         language_adaptation();
-    }    
+    }  
+    
+    private void initAparece() {
+        Duration d = new Duration(500);
+        FadeTransition fadeTransition = new FadeTransition();
+        fadeTransition.setFromValue(0);
+        fadeTransition.setToValue(1);
+        fadeTransition.setDuration(d);
+        fadeTransition.play();
+    }
+    
+    private void initDesaparece() {
+        Duration d = new Duration(500);
+        FadeTransition fadeTransition = new FadeTransition();
+        fadeTransition.setFromValue(1);
+        fadeTransition.setToValue(0);
+        fadeTransition.setDuration(d);
+        fadeTransition.play();
+    } 
+    public void labelNitida(Label l){
+        l.setOpacity(1.0);
+    }
+    
+    public void labelTransparente(Label l){
+        l.setOpacity(0.1);
+    }
     
 }
