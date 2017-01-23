@@ -121,7 +121,7 @@ public class Register_UserController implements Initializable {
         tf_user.setPromptText(map_languages.get("tf_user"));
         pf_password.setPromptText(map_languages.get("pf_password"));
         pf_password_confirm.setPromptText(map_languages.get("pf_password_confirm"));
-        dp_date_birth.setPromptText(map_languages.get("dp_date_birth"));
+        dp_date_birth.setPromptText(map_languages.get("dp_birth"));
     
         btn_change.setText(map_languages.get("btn_change"));
         btn_delete.setText(map_languages.get("btn_delete"));

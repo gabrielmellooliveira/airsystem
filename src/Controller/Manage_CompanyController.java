@@ -285,7 +285,7 @@ public class Manage_CompanyController implements Initializable {
         tf_email.setPromptText(map_languages.get("tf_email"));
     
         btn_change.setText(map_languages.get("btn_change"));
-        btn_delete_img.setText(map_languages.get("btn_delete_img"));
+        btn_delete_img.setText(map_languages.get("btn_delete"));
         btn_register.setText(map_languages.get("btn_register"));
         btn_cancel.setText(map_languages.get("btn_cancel"));
     }

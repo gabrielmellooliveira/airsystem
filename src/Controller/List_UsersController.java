@@ -222,7 +222,7 @@ public class List_UsersController implements Initializable {
         lb_name.setText(map_languages.get("lb_name"));
         lb_last_name.setText(map_languages.get("lb_last_name"));
         lb_address.setText(map_languages.get("lb_address"));
-        lb_date_birth.setText(map_languages.get("lb_date_birth"));
+        lb_date_birth.setText(map_languages.get("lb_birth"));
         lb_phone.setText(map_languages.get("lb_phone"));
         lb_user.setText(map_languages.get("lb_user"));
         lb_password.setText(map_languages.get("lb_password"));
@@ -235,14 +235,14 @@ public class List_UsersController implements Initializable {
         tf_user.setPromptText(map_languages.get("tf_user"));
         pf_password.setPromptText(map_languages.get("pf_password"));
         pf_password_confirm.setPromptText(map_languages.get("pf_password_confirm"));
-        dp_date_birth.setPromptText(map_languages.get("dp_date_birth"));
+        dp_date_birth.setPromptText(map_languages.get("dp_birth"));
     
         btn_change.setText(map_languages.get("btn_change"));
         btn_delete.setText(map_languages.get("btn_delete"));
         btn_back.setText(map_languages.get("btn_back"));
         btn_new.setText(map_languages.get("btn_new"));
         btn_edit.setText(map_languages.get("btn_edit"));
-        btn_delete_user.setText(map_languages.get("btn_delete_user"));
+        btn_delete_user.setText(map_languages.get("btn_delete"));
     
     }
     

@@ -352,7 +352,7 @@ public class Manage_Aircraft_PlaneController implements Initializable {
         cb_company.setPromptText(map_languages.get("cb_company"));
     
         btn_change.setText(map_languages.get("btn_change"));
-        btn_delete_img.setText(map_languages.get("btn_delete_img"));
+        btn_delete_img.setText(map_languages.get("btn_delete"));
         btn_register.setText(map_languages.get("btn_register"));
         btn_cancel.setText(map_languages.get("btn_cancel"));
     }

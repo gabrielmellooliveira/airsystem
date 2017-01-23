@@ -21,7 +21,7 @@
       </TableView>
       <TabPane prefHeight="389.0" prefWidth="476.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab fx:id="tab_cadastro" text="Cadastro">
+          <Tab fx:id="tab_register" text="Cadastro">
                <content>
                   <AnchorPane prefHeight="360.0" prefWidth="343.0">
                      <children>
@@ -43,7 +43,7 @@
                      </children></AnchorPane>
                </content>
             </Tab>
-          <Tab fx:id="tab_pesquisa" text="Pesquisa">
+          <Tab fx:id="tab_search" text="Pesquisa">
                <content>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>

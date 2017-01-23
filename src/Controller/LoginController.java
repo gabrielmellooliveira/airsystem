@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -31,6 +32,10 @@ public class LoginController implements Initializable {
     public static boolean Is_admin() {
         return is_admin;
     }
+    
+    //Labels
+    @FXML
+    private Label lb_language, lb_user, lb_password;
     
     //Fileds
     @FXML private TextField tf_user;
@@ -74,18 +79,12 @@ public class LoginController implements Initializable {
                 User_DAO user_DAO = new User_DAO();
                 users = user_DAO.select_user();
                 
-                for (User list_user : users) {
+                for (User user : users) {
                 
-                    if (list_user.getUser().equals(tf_user.getText())) {
+                    if (user.getUser().equals(tf_user.getText())) {
                     
-                        if (list_user.getPassword().equals(pf_password.getText())) {
+                        if (user.getPassword().equals(pf_password.getText())) {
                       
-                            try {
-                                Choose_Language.Choose_Language(cb_language.getValue());
-                            } catch (IOException ex) {
-                                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                            
                             //Alert
                             Interfaces.Interface_Alert.Alert(map_languages.get("login_success"), map_languages.get("login_success_message"));
                             
@@ -128,7 +127,13 @@ public class LoginController implements Initializable {
         cb_language.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                try {
+                    Choose_Language.Choose_Language(newValue);
+                } catch (IOException ex) {
+                    Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 
+                language_adaptation();
             }
         });
         btn_enter.setOnMouseClicked(s -> log_into());
@@ -145,6 +150,9 @@ public class LoginController implements Initializable {
     } 
     
     void language_adaptation(){
+        lb_language.setText(map_languages.get("lb_language"));
+        lb_user.setText(map_languages.get("lb_user"));
+        lb_password.setText(map_languages.get("lb_password"));
         tf_user.setPromptText(map_languages.get("tf_user"));
         pf_password.setPromptText(map_languages.get("pf_password"));
         btn_enter.setText(map_languages.get("btn_enter"));
@@ -159,6 +167,7 @@ public class LoginController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         add_css();
         action_buttons();
         language_adaptation();
