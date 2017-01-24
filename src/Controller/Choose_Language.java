@@ -38,9 +38,11 @@ public class Choose_Language {
         try{
         
             if(language.equals("Portuguese")){
-                is = new FileInputStream("C:\\Users\\Gabriel\\Desktop\\AirSystem\\src\\language\\portuguese.txt");
+                is = new FileInputStream("C:\\Users\\User\\Desktop\\Aero\\src\\language\\portuguese.txt");
+                //is = new FileInputStream("C:\\Users\\Gabriel\\Desktop\\AirSystem\\src\\language\\portuguese.txt");
             }else if(language.equals("English")){
-                is = new FileInputStream("C:\\Users\\Gabriel\\Desktop\\AirSystem\\src\\language\\english.txt");
+                is = new FileInputStream("C:\\Users\\User\\Desktop\\Aero\\src\\language\\english.txt");
+                //is = new FileInputStream("C:\\Users\\Gabriel\\Desktop\\AirSystem\\src\\language\\english.txt");
             } 
 
             map_languages = new HashMap<String, String>();
