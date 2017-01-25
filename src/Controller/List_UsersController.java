@@ -103,6 +103,8 @@ public class List_UsersController implements Initializable {
                     //Alert
                     Interfaces.Interface_Alert.Alert(map_languages.get("register_success"), map_languages.get("register_success_message"));
                 
+                    init_table();
+                    
                 } catch (SQLException ex) {
                     Logger.getLogger(Register_UserController.class.getName()).log(Level.SEVERE, null, ex);
                 }

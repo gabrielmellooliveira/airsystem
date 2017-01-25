@@ -52,6 +52,8 @@ public class Manage_Aircraft_ManufacturerController implements Initializable {
                 //Alert
                 Interfaces.Interface_Alert.Alert(map_languages.get("register_success"), map_languages.get("register_success_message"));
                 
+                cancel();
+                
             } catch (SQLException ex) {
                 Logger.getLogger(Register_UserController.class.getName()).log(Level.SEVERE, null, ex);
                     
@@ -70,13 +72,7 @@ public class Manage_Aircraft_ManufacturerController implements Initializable {
     void action_buttons(){
         btn_register.setOnMouseClicked(s -> register());
         btn_cancel.setOnMouseClicked(s -> {
-            Manage_Aircraft screen = new Manage_Aircraft();
-            try {
-                screen.start(new Stage());
-                Manage_Aircraft_Manufacturer.getStage().close();
-            } catch (Exception ex) {
-                Logger.getLogger(Manage_Aircraft_ManufacturerController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            cancel();
         });
     }
     
@@ -95,6 +91,14 @@ public class Manage_Aircraft_ManufacturerController implements Initializable {
     
         btn_register.setText(map_languages.get("btn_register"));
         btn_cancel.setText(map_languages.get("btn_cancel"));
+    }
+    
+    void cancel(){
+        tf_manufacturer.clear();
+        tf_focus.clear();
+        tf_country_origin.clear();
+        tf_phone.clear();
+        tf_email.clear(); 
     }
     
     /**

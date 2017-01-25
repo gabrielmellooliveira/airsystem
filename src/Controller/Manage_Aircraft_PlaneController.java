@@ -255,6 +255,8 @@ public class Manage_Aircraft_PlaneController implements Initializable {
                 //Alert
                 Interfaces.Interface_Alert.Alert(map_languages.get("register_success"), map_languages.get("register_success_message"));
                 
+                cancel();
+                
             } catch (SQLException ex) {
                 Logger.getLogger(Register_UserController.class.getName()).log(Level.SEVERE, null, ex);
                 
@@ -289,13 +291,7 @@ public class Manage_Aircraft_PlaneController implements Initializable {
         btn_delete_img.setOnMouseClicked(s -> img_airplane_register.setImage(new Image("/Images/sem-foto.jpg")));
         btn_register.setOnMouseClicked(s -> register());
         btn_cancel.setOnMouseClicked(s -> {
-            Main screen = new Main();
-            try {
-                screen.start(new Stage());
-                Manage_Aircraft_Plane.getStage().close();
-            } catch (Exception ex) {
-                Logger.getLogger(Manage_Aircraft_ManufacturerController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            cancel();
         });
         
         img_add_sound.setOnMouseClicked(s -> add_audio());
@@ -355,6 +351,14 @@ public class Manage_Aircraft_PlaneController implements Initializable {
         btn_delete_img.setText(map_languages.get("btn_delete"));
         btn_register.setText(map_languages.get("btn_register"));
         btn_cancel.setText(map_languages.get("btn_cancel"));
+    }
+    
+    void cancel(){
+        tf_customization.clear();
+        tf_description.clear();
+        cb_model.setValue(null);
+        cb_manufacturer.setValue(null);
+        cb_company.setValue(null);
     }
     
     /**
