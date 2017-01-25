@@ -160,6 +160,7 @@ public class Manage_CompanyController implements Initializable {
             Interfaces.Interface_Alert.Alert(map_languages.get("delete_success"), map_languages.get("delete_success_message"));
             
             init_table();
+            cancel();
             
         } catch (SQLException ex) {
             Logger.getLogger(List_UsersController.class.getName()).log(Level.SEVERE, null, ex);
@@ -197,6 +198,7 @@ public class Manage_CompanyController implements Initializable {
                 Interfaces.Interface_Alert.Alert(map_languages.get("register_success"), map_languages.get("register_success_message"));
                 
                 init_table();
+                cancel();
                 
             } catch (SQLException ex) {
                 Logger.getLogger(Register_UserController.class.getName()).log(Level.SEVERE, null, ex);
@@ -293,6 +295,14 @@ public class Manage_CompanyController implements Initializable {
         btn_delete_img.setText(map_languages.get("btn_delete"));
         btn_register.setText(map_languages.get("btn_register"));
         btn_cancel.setText(map_languages.get("btn_cancel"));
+    }
+    
+    void cancel(){
+        tf_company.clear();
+        tf_cnpj.clear();
+        tf_city.clear();
+        tf_phone.clear();
+        tf_email.clear();
     }
     
     /**

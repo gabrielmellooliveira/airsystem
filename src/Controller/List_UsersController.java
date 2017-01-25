@@ -104,6 +104,7 @@ public class List_UsersController implements Initializable {
                     Interfaces.Interface_Alert.Alert(map_languages.get("register_success"), map_languages.get("register_success_message"));
                 
                     init_table();
+                    cancel();
                     
                 } catch (SQLException ex) {
                     Logger.getLogger(Register_UserController.class.getName()).log(Level.SEVERE, null, ex);
@@ -140,6 +141,9 @@ public class List_UsersController implements Initializable {
                     //Alert
                     Interfaces.Interface_Alert.Alert(map_languages.get("edit_success"), map_languages.get("edit_success_message"));
                     
+                    init_table();
+                    cancel();
+                    
                 } catch (SQLException ex) {
                     Logger.getLogger(Register_UserController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -161,6 +165,8 @@ public class List_UsersController implements Initializable {
             
             //Alert
             Interfaces.Interface_Alert.Alert(map_languages.get("delete_success"), map_languages.get("delete_success_message"));
+            
+            cancel();
             
         } catch (SQLException ex) {
             Logger.getLogger(List_UsersController.class.getName()).log(Level.SEVERE, null, ex);
@@ -246,6 +252,17 @@ public class List_UsersController implements Initializable {
         btn_edit.setText(map_languages.get("btn_edit"));
         btn_delete_user.setText(map_languages.get("btn_delete"));
     
+    }
+    
+    void cancel(){
+        tf_name.clear();
+        tf_last_name.clear();
+        tf_address.clear();
+        tf_phone.clear();
+        tf_user.clear();
+        pf_password.clear();
+        pf_password_confirm.clear();
+        dp_date_birth.setValue(null);
     }
     
     /**
