@@ -133,6 +133,9 @@ public class Manage_CompanyController implements Initializable {
                    doc.add(new Paragraph(lb_phone.getText() + ": " + company.getPhone()));
                    doc.add(new Paragraph(lb_email.getText() + ": " + company.getEmail()));
                    com.itextpdf.text.Image image = com.itextpdf.text.Image.getInstance(company.getImg());
+                   image.setAlignment(0);
+                   image.scaleAbsoluteHeight(100);
+                   image.scaleAbsoluteWidth(100);
                    doc.add(image);
                 }
 
@@ -234,15 +237,7 @@ public class Manage_CompanyController implements Initializable {
         btn_change.setOnMouseClicked(s -> change());
         btn_delete_img.setOnMouseClicked(s -> img_company_register.setImage(new Image("/Images/sem-foto.jpg")));
         btn_register.setOnMouseClicked(s -> register());
-        btn_cancel.setOnMouseClicked(s -> {
-            Main screen = new Main();
-            try {
-                screen.start(new Stage());
-                Manage_Company.getStage().close();
-            } catch (Exception ex) {
-                Logger.getLogger(Manage_Aircraft_ManufacturerController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
+        btn_cancel.setOnMouseClicked(s -> cancel());
         
         table_company.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
@@ -303,6 +298,7 @@ public class Manage_CompanyController implements Initializable {
         tf_city.clear();
         tf_phone.clear();
         tf_email.clear();
+        img_company_register.setImage(new Image("/Images/sem-foto.jpg"));
     }
     
     /**
@@ -311,6 +307,7 @@ public class Manage_CompanyController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        img_company_register.setImage(new Image("/Images/sem-foto.jpg"));
         init_table();
         add_css();
         action_buttons();

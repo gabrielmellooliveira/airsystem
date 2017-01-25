@@ -182,6 +182,9 @@ public class Manage_Aircraft_PlaneController implements Initializable {
                    doc.add(new Paragraph(lb_customization.getText() + ": " + plane.getColor()));
                    doc.add(new Paragraph(lb_description.getText() + ": " + plane.getDescription()));
                    com.itextpdf.text.Image image = com.itextpdf.text.Image.getInstance(plane.getImg());
+                   image.setAlignment(0);
+                   image.scaleAbsoluteHeight(100);
+                   image.scaleAbsoluteWidth(100);
                    doc.add(image);
                 }
 
@@ -362,6 +365,7 @@ public class Manage_Aircraft_PlaneController implements Initializable {
         cb_model.setValue(null);
         cb_manufacturer.setValue(null);
         cb_company.setValue(null);
+        img_airplane_register.setImage(new Image("/Images/sem-foto.jpg"));
     }
     
     /**
@@ -370,6 +374,7 @@ public class Manage_Aircraft_PlaneController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        img_airplane_register.setImage(new Image("/Images/sem-foto.jpg"));
         init_scene();
         init_table();
         add_css();

@@ -166,6 +166,7 @@ public class List_UsersController implements Initializable {
             //Alert
             Interfaces.Interface_Alert.Alert(map_languages.get("delete_success"), map_languages.get("delete_success_message"));
             
+            init_table();
             cancel();
             
         } catch (SQLException ex) {
@@ -211,7 +212,10 @@ public class List_UsersController implements Initializable {
                     tf_phone.setText(user_selected.getPhone());
                     tf_user.setText(user_selected.getUser());
                     dp_date_birth.setValue(user_selected.getDate_birth());
-                    img.setImage(new Image(user_selected.getImg()));
+                    pf_password.setText(user_selected.getPassword());
+                    pf_password_confirm.setText(user_selected.getPassword());
+                    img_file = user_selected.getImg();
+                    img.setImage(new Image(img_file));
                 }else{
                     user_selected = null;
                 }
@@ -263,6 +267,7 @@ public class List_UsersController implements Initializable {
         pf_password.clear();
         pf_password_confirm.clear();
         dp_date_birth.setValue(null);
+        img.setImage(new Image("/Images/sem-foto.jpg"));
     }
     
     /**
@@ -271,6 +276,7 @@ public class List_UsersController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        img.setImage(new Image("/Images/sem-foto.jpg"));
         init_table();
         add_css();
         action_buttons();

@@ -78,6 +78,9 @@ public class Register_UserController implements Initializable {
                     //Alert
                     Interfaces.Interface_Alert.Alert(map_languages.get("register_success"), map_languages.get("register_success_message"));
                     
+                    Login.getStage().show();
+                    Register_User.getStage().close();
+                    
                 } catch (SQLException ex) {
                     Logger.getLogger(Register_UserController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -103,7 +106,7 @@ public class Register_UserController implements Initializable {
         btn_change.setOnMouseClicked(s -> change_image());
         btn_delete.setOnMouseClicked(s -> img.setImage(new Image("/Images/sem-foto.jpg")));
         btn_register.setOnMouseClicked(s -> register_user());
-        btn_cancel.setOnMouseClicked(s -> {Login.getStage().show();Register_User.getStage().close();});
+        btn_cancel.setOnMouseClicked(s -> cancel());
     }
     
     void language_adaptation(){
@@ -127,6 +130,18 @@ public class Register_UserController implements Initializable {
         btn_delete.setText(map_languages.get("btn_delete"));
         btn_register.setText(map_languages.get("btn_register"));
         btn_cancel.setText(map_languages.get("btn_cancel"));
+    }
+    
+    void cancel(){
+        tf_name.clear();
+        tf_last_name.clear();
+        tf_address.clear();
+        tf_address_number.clear();
+        tf_user.clear();
+        pf_password.clear();
+        pf_password_confirm.clear();
+        dp_date_birth.setValue(null);
+        img.setImage(new Image("/Images/sem-foto.jpg"));
     }
     
     /**
