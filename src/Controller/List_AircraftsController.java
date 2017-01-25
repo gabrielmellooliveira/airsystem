@@ -254,6 +254,8 @@ public class List_AircraftsController implements Initializable {
                 
             }else{
                 
+                cont = 0;
+                
                 vbox_airplane.getChildren().add(hbox);
                 
                 hbox = new HBox();

@@ -166,7 +166,7 @@ public class Manage_Aircraft_PlaneController implements Initializable {
         Document doc = new Document();
         FileChooser fc = new FileChooser();
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF", "*.pdf"));
-        File file = fc.showOpenDialog(new Stage());
+        File file = fc.showSaveDialog(new Stage());
         if(file != null){
             try {
                 PdfWriter.getInstance(doc, new FileOutputStream(file.getAbsolutePath()));
@@ -207,6 +207,8 @@ public class Manage_Aircraft_PlaneController implements Initializable {
             
             //Alert
             Interfaces.Interface_Alert.Alert(map_languages.get("delete_success"), map_languages.get("delete_success_message"));
+            
+            init_table();
             
         } catch (SQLException ex) {
             Logger.getLogger(List_UsersController.class.getName()).log(Level.SEVERE, null, ex);
@@ -255,6 +257,7 @@ public class Manage_Aircraft_PlaneController implements Initializable {
                 //Alert
                 Interfaces.Interface_Alert.Alert(map_languages.get("register_success"), map_languages.get("register_success_message"));
                 
+                init_table();
                 cancel();
                 
             } catch (SQLException ex) {
